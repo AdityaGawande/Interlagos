@@ -1,3 +1,6 @@
+Interlagos
+Intrument control through pyvisa for automated testing
+
 Issues -
 Ensure consistency in addresses across all files
 Add trimming functionality

@@ -1,0 +1,5 @@
+pyvisa
+gspread
+numpy
+oauth2client
+pyvisa-py

@@ -89,7 +89,7 @@ while True:
         # Function to run Standard gain measurement n times and fill it into a csv, (put raw readings into the csv as well)
         standard_method.measure_gain(n)
         # Function to run stats on n measurements - print numbers into the terminal (?send this into the google sheet)
-        stats.single_value_from_csv(n)
+        # stats.single_value_from_csv(n)
         # i2c.trimbits_dump_res()
     elif choice == '5':
         n = int(input("How many times? "))

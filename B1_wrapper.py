@@ -80,6 +80,7 @@ def DMM_x3_single(dmm1, dmm2, dmm3, PLC):
 from datetime import datetime
 now = str(datetime.now())
 print("Test started at", now)
+print()
 # logfile.write("Test started at ")
 # logfile.write(now)
 # logfile.write("\n")

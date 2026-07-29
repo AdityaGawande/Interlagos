@@ -87,7 +87,7 @@ print()
 
 
 
-length = 1000
+length = 40
 PLC = 1
 
 print(f"Running at a PLC of {PLC}")

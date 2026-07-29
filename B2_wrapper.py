@@ -174,7 +174,7 @@ print("Test started at", now)
 
 
 
-length = 4
+length = 40
 
 voltage = 0.005
 range = 0.1

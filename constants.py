@@ -14,20 +14,20 @@ testmode_exit_delay = 5
 
 # Instrument constants
 # dmm1 for vsense
-dmm1_addr = "TCPIP0::10.9.3.214::inst0::INSTR"
+dmm1_addr = "TCPIP0::10.9.0.81::inst0::INSTR"
 # dmm1_addr = "TCPIP0::10.9.3.215::inst0::INSTR"
 # dmm2 for vout
-dmm2_addr = "TCPIP0::10.9.4.236::inst0::INSTR"
+dmm2_addr = "TCPIP0::10.9.0.82::inst0::INSTR"
 # dmm3 for vcm
-dmm3_addr = "TCPIP0::10.9.4.243::inst0::INSTR"
+dmm3_addr = "TCPIP0::10.9.0.83::inst0::INSTR"
 # psu for relay connection/disconnection
-psu_addr = "TCPIP0::10.9.3.216::inst0::INSTR"
+psu_addr = "TCPIP0::10.9.0.84::inst0::INSTR"
 # smu for Vref and Isense/DATA
-smu_2ch_addr = 'TCPIP0::10.9.4.222::inst0::INSTR'
+smu_2ch_addr = 'TCPIP0::10.9.0.86::inst0::INSTR'
 # smu for VCM
-smu_bad_addr = "TCPIP::10.9.4.235::inst0::INSTR"
+smu_bad_addr = "GPIB0::24::INSTR"
 # Function generation for I2C clock
-afg_addr = "TCPIP0::10.9.3.234::inst0::INSTR"
+afg_addr = "TCPIP0::10.9.0.85::inst0::INSTR"
 
 
 # Google sheet constants (Do not change)

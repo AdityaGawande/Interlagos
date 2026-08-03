@@ -107,7 +107,7 @@ def DMM_x3_GainError(n,voltage,range,PLC, dmm2_range):
     dmm2.close()
     dmm3.close()
     
-    smu.write("smua.source.output = smub.OUTPUT_OFF")
+    smu.write("smua.source.output = smua.OUTPUT_OFF")
     smu.close()
     time.sleep(1)
 

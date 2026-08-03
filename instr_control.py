@@ -10,7 +10,7 @@ def SMUchA_voltage_set(voltage):
     smu.write("smua.source.func = smua.OUTPUT_DCVOLTS")
     smu.write(f"smua.source.levelv = {voltage}")
     smu.write("smua.source.limiti = 0.0005")
-    smu.write("smua.source.output = smub.OUTPUT_ON")
+    smu.write("smua.source.output = smua.OUTPUT_ON")
     smu.close()
     time.sleep(1)
 

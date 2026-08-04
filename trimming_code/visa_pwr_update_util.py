@@ -8,6 +8,9 @@ import time
 
 def testmode_pwr_set():
     '''
+    Changes VREF voltage to 8V
+    '''
+    '''
     # Initialize the VISA resource manager
     rm = pyvisa.ResourceManager()
 
@@ -128,7 +131,9 @@ def vref_set(ch1_voltage, ch2_voltage):
 
 
 def testmode_pwr_ref_reset():
-
+    '''
+    Turns off output for VREF
+    '''
     # Initialize VISA and connect to Keithley 2636B via USB
     rm = pyvisa.ResourceManager()
 

@@ -2,7 +2,7 @@
 
 import pyvisa
 import time
-from concurrent.futures import ThreadPoolExecutor
+# from concurrent.futures import ThreadPoolExecutor
 import gsheet_util_new  # Assumes you have this utility
 
 import csv_utils
@@ -11,7 +11,7 @@ from i2c_data_tx_util import testmode_entry, testmode_exit, i2c_reg_write
 from gsheet_util import update_local_files
 import pyvisa
 from visa_pwr_update_util import testmode_pwr_set, testmode_pwr_ref_reset
-from visa_smu_turnoff import turn_off_smu_output
+# from visa_smu_turnoff import turn_off_smu_output
 import time
 import relay_power_control
 #from data_execl_local import write_to_excel_cell
@@ -20,10 +20,12 @@ import x_y
 
 # ===> Constants
 vref = 2.5
-meas_vol = 0
-google_sheet_id = '1hF4Snpfwg6-8w03q6VBuWfcwUNAFX5iWZxPIyqwjrc4'
+# meas_vol = 0
+google_sheet_id = '1d5e6bYR3UWXNtU9GqvDx5CAbm5iQKSkFBRPAPimTJb8'
 #google_sheetname2 = 'TC_G50_M1'
-google_sheetname2 = 'GAIN200'
+
+# This is the sheet being written into for resistor DAC calculation
+google_sheetname2 = 'GAIN50'
 
 #arr1 = [18, 30, 44, 58, 71, 84, 85, 97, 109, 121, 132, 144, 156, 168, 180]
 arr1 = [15, 27, 41, 55, 68, 81, 85, 97, 109, 121, 132, 144, 156, 168, 180]
@@ -86,7 +88,7 @@ gen.timeout = 5000
     # return str(float(dmm_v))
     
 
-t1 = time.time()
+# t1 = time.time()
 
 j = 0 # measurements selection (0 to 5)
 google_sheetname1 = "Python_sheet"
@@ -108,8 +110,10 @@ google_sheetname1 = "Python_sheet"
 t = 0.01
 filename_csv = 'gsheet_trimbit_values.csv'
 
+# Each j refers to a trimming step, where the DAC code is copied from a sheet to the overall sheet
 while j < 1:
     k = 0
+    # Reset Resistor DAC values to max
     if j==0:
         cell_value_pairs = [
         ("B8", 15),
@@ -122,7 +126,7 @@ while j < 1:
         ("B15", 31),
         ]
         gsheet_util_new.write_multiple_values(google_sheet_id, google_sheetname1,cell_value_pairs)
-        t2 = time.time()
+        # t2 = time.time()
     if j==1:
         cell_value_pairs = [
        ("B8", 1),
@@ -171,12 +175,11 @@ while j < 1:
        ("B14", value1),
        ("B15", value2),
        ]
-        
         #print(f"Trim bits from B8: {trim_bit}")
         gsheet_util_new.write_multiple_values(google_sheet_id, google_sheetname1, cell_value_pairs)
         
 
-
+    # Writes bits from google sheet into the IC, then makes 3x measurements
     while k < 5:
         """
         0 - testmode entry
@@ -186,6 +189,8 @@ while j < 1:
         4 - amplification
 
         """
+        
+        # Enter testmode
         if k == 0:
             # enter testmode
             print("Disconnecting Vsense resistor")
@@ -200,6 +205,7 @@ while j < 1:
             testmode_pwr_ref_reset()
             time.sleep(2)
 
+        # Put values from downloaded csv into regs (again?) and then into the IC using I2C
         elif k == 2:
             parameters = csv_utils.read_csv_with_bit_length(filename_csv)
             for param in parameters:
@@ -224,6 +230,7 @@ while j < 1:
                 i2c_reg_write(i, regs[i], t)
             time.sleep(2)
 
+        # Exit testmode
         elif k == 3:
             # exit testmode
             print("testmode_exit")
@@ -234,12 +241,13 @@ while j < 1:
 
             time.sleep(5)
 
-
+        # Update values from google sheet and put them into regs
         elif k == 1:
             # Google Sheet ID and mapping of sheet names to local files
             SHEET_ID = '1hF4Snpfwg6-8w03q6VBuWfcwUNAFX5iWZxPIyqwjrc4'  # Replace with your Google Sheet ID
             
             FILE_MAP = {
+                # Python_sheet is being saved as gsheet_trimbit_values.csv
                 google_sheetname1: filename_csv
                 # Add more sheets and files as needed
             }
@@ -266,6 +274,7 @@ while j < 1:
             
             time.sleep(2)
 
+        # Take 3 measurements and put them into 'proposed method' google sheet
         elif k == 4:
             
             
@@ -322,7 +331,7 @@ while j < 1:
 
                     time.sleep(3)
 
-                  # Measure Voltages from SMUs
+                    # Measure Voltages from SMUs
                     results = measure_dmm_x3(dmm_address_1, dmm_address_2, dmm_address_3)
                     # r1 = str(float(results[0]))
                     # r2 = str(float(results[1]))
@@ -340,7 +349,7 @@ while j < 1:
                     # print("r2 is", r2)
                     # print("r3 is", r3)
                     
-               # gain_x_gain_y.compute_gain_xy(r3, r2,r1)
+                    # gain_x_gain_y.compute_gain_xy(r3, r2,r1)
                     print(r1,r2,r3)
                     # print("Execution at line ", )
                     # gainx, gainy = x_y.compute_x_y(r1, r2, r3)

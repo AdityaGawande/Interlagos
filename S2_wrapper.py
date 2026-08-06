@@ -14,6 +14,7 @@ def cmrr_measurement_init():
     # instr_dummy.SMUchA_voltage_set(2.5)
     # Set Isense = 5mA - SMUchB
     # instr_control.SMUchB_current_set(0)
+    print()
     
 def cmrr_measurement_single(Gain_ideal, dmm1, dmm2, dmm3):
     # Set VCM to 0.5V - SMU_bad
@@ -80,7 +81,7 @@ now = str(datetime.now())
 print("Test started at", now)
 print()
 
-length = 100
+length = 1000
 # Gain_ideal = 50
 
 # PLC = 1

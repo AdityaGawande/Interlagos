@@ -25,7 +25,7 @@ psu_addr = "TCPIP0::10.9.0.84::inst0::INSTR"
 # smu for Vref and Isense/DATA
 smu_2ch_addr = 'TCPIP0::10.9.0.86::inst0::INSTR'
 # smu for VCM
-smu_bad_addr = "GPIB0::24::INSTR"
+smu_bad_addr = "TCPIP0::10.9.0.87::inst0::INSTR"
 # Function generation for I2C clock
 afg_addr = "TCPIP0::10.9.0.85::inst0::INSTR"
 

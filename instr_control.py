@@ -27,15 +27,133 @@ def SMUchB_current_set(current):
 def SMUbad_voltage_set(voltage):
     # Write code here
     smu_vcm = rm.open_resource(smu_bad_addr)
-    time.sleep(1)
+    # time.sleep(1)
     smu_vcm.write(":SOUR:FUNC VOLT")
     smu_vcm.write(":SOUR:VOLT:RANG 200")
-    smu_vcm.write(":SOUR:VOLT:ILIMIT 0.006")
-    time.sleep(1)
+    smu_vcm.write(":SENS:CURR:RANG 0.001")
+    smu_vcm.write(":SOUR:VOLT:ILIMIT 0.001")
+    smu_vcm.write(":SENS:CURR:RANG 0.001")
+    # time.sleep(1)
     smu_vcm.write(f":SOUR:VOLT {voltage}")
     smu_vcm.write(":OUTP ON")
-    smu_vcm.close()
     time.sleep(1)
+    smu_vcm.query(":MEAS:CURR?")
+    smu_vcm.close()
+
+
+def dmm_measure_x3_setup():
+    dmm1 = rm.open_resource(dmm1_addr)
+    dmm1.write(":SENS:VOLT:DC:RANGE 0.1")
+    dmm1.write(":SENS:VOLT:DC:NPLC 100")
+    dmm1.write("TRIG:SOUR BUS")
+    # dmm1.write("INIT\n")
+    # time.sleep(0.1)
+    dmm2 = rm.open_resource(dmm2_addr)
+    dmm2.write(":SENS:VOLT:DC:RANGE 1")
+    dmm2.write(":SENS:VOLT:DC:NPLC 100")
+    dmm2.write("TRIG:SOUR BUS")
+    # dmm2.write("INIT\n")
+    # time.sleep(0.1)
+    dmm3 = rm.open_resource(dmm3_addr)
+    dmm3.write(":SENS:VOLT:DC:RANGE 100")
+    dmm3.write(":SENS:VOLT:DC:NPLC 100")
+    dmm3.write("TRIG:SOUR BUS")
+    # dmm3.write("INIT\n")
+    # time.sleep(0.1)
+
+    # # Trigger Voltages from SMUs - concurrency is required. storing their results is not required
+    # with ThreadPoolExecutor() as executor:
+    #     futures = [
+    #         executor.submit(dmm1.write, "*TRG\n"),
+    #         executor.submit(dmm2.write, "*TRG\n"),
+    #         executor.submit(dmm3.write, "*TRG\n")
+    #     ]
+    #     results = [float(future.result()) for future in futures]
+
+    # time.sleep(4)
+
+    # # Measure Voltages from SMUs - concurrency is not required
+    # with ThreadPoolExecutor() as executor:
+    #     futures = [
+    #         executor.submit(dmm1.query, "FETCH?"),
+    #         executor.submit(dmm2.query, "FETCH?"),
+    #         executor.submit(dmm3.query, "FETCH?")
+    #     ]
+    #     results = [float(future.result()) for future in futures]
+
+
+    # dmm1.close()
+    # dmm2.close()
+    # dmm3.close()
+
+    # return results
+    return dmm1, dmm2, dmm3
+
+def dmm_measure_x3_single(dmm1, dmm2, dmm3):   
+    # dmm1 = rm.open_resource(dmm1_addr)
+    # dmm1.write(":SENS:VOLT:DC:RANGE 0.1")
+    # dmm1.write(":SENS:VOLT:DC:NPLC 100")
+    # dmm1.write("TRIG:SOUR BUS")
+    # dmm1.write("INIT\n")
+    # time.sleep(0.1)
+    # dmm2 = rm.open_resource(dmm2_addr)
+    # dmm2.write(":SENS:VOLT:DC:RANGE 1")
+    # dmm2.write(":SENS:VOLT:DC:NPLC 100")
+    # dmm2.write("TRIG:SOUR BUS")
+    # dmm2.write("INIT\n")
+    # time.sleep(0.1)
+    # dmm3 = rm.open_resource(dmm3_addr)
+    # dmm3.write(":SENS:VOLT:DC:RANGE 100")
+    # dmm3.write(":SENS:VOLT:DC:NPLC 100")
+    # dmm3.write("TRIG:SOUR BUS")
+    # dmm3.write("INIT\n")
+    # time.sleep(0.1)
+
+    with ThreadPoolExecutor() as executor:
+        executor.submit(dmm1.write, "INIT\n")
+        executor.submit(dmm2.write, "INIT\n")
+        executor.submit(dmm3.write, "INIT\n")
+
+    # Trigger Voltages from SMUs - concurrency is required. storing their results is not required
+    with ThreadPoolExecutor() as executor:
+        executor.submit(dmm1.write, "*TRG\n")
+        executor.submit(dmm2.write, "*TRG\n")
+        executor.submit(dmm3.write, "*TRG\n")
+    # with ThreadPoolExecutor() as executor:
+    #     futures = [
+    #         executor.submit(dmm1.write, "*TRG\n"),
+    #         executor.submit(dmm2.write, "*TRG\n"),
+    #         executor.submit(dmm3.write, "*TRG\n")
+    #     ]
+    #     results = [float(future.result()) for future in futures]
+
+    time.sleep(4)
+
+    # Measure Voltages from SMUs - concurrency is not required
+    # with ThreadPoolExecutor() as executor:
+    #     futures = [
+    #         executor.submit(dmm1.query, "FETCH?"),
+    #         executor.submit(dmm2.query, "FETCH?"),
+    #         executor.submit(dmm3.query, "FETCH?")
+    #     ]
+    #     results = [float(future.result()) for future in futures]
+
+    r11 = float(dmm1.query("FETCH?"))
+    r21 = float(dmm2.query("FETCH?"))
+    r31 = float(dmm3.query("FETCH?"))
+
+
+    # dmm1.close()
+    # dmm2.close()
+    # dmm3.close()
+
+    # return results
+    return r11, r21, r31
+
+def dmm_measure_x3_deinit(dmm1, dmm2, dmm3):
+    dmm1.close()
+    dmm2.close()
+    dmm3.close()
 
 def dmm_measure_x3():   
     dmm1 = rm.open_resource(dmm1_addr)
@@ -65,6 +183,8 @@ def dmm_measure_x3():
             executor.submit(dmm3.write, "*TRG\n")
         ]
         results = [float(future.result()) for future in futures]
+
+    time.sleep(4)
 
     # Measure Voltages from SMUs - concurrency is not required
     with ThreadPoolExecutor() as executor:

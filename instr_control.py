@@ -1,6 +1,6 @@
 import pyvisa
 import time
-from constants import dmm1_addr, dmm2_addr, dmm3_addr, smu_2ch_addr, smu_bad_addr, psu_addr, afg_addr, res_connection_delay
+from constants import dmm1_addr, dmm2_addr, dmm3_addr, smu_2ch_addr, smu_bad_addr, psu_addr, afg_addr, res_connection_delay, SMUchA_current_limit, SMUchB_voltage_limit
 from concurrent.futures import ThreadPoolExecutor
 rm = pyvisa.ResourceManager()
 
@@ -9,7 +9,7 @@ def SMUchA_voltage_set(voltage):
     time.sleep(0.1)
     smu.write("smua.source.func = smua.OUTPUT_DCVOLTS")
     smu.write(f"smua.source.levelv = {voltage}")
-    smu.write("smua.source.limiti = 0.0005")
+    smu.write(f"smua.source.limiti = {SMUchA_current_limit}")
     smu.write("smua.source.output = smua.OUTPUT_ON")
     smu.close()
     time.sleep(1)
@@ -19,7 +19,7 @@ def SMUchB_current_set(current):
     time.sleep(0.1)
     smu.write("smub.source.func = smub.OUTPUT_DCAMPS")
     smu.write(f"smub.source.leveli = {current}")
-    smu.write("smub.source.limitv = 20")
+    smu.write(f"smub.source.limitv = {SMUchB_voltage_limit}")
     smu.write("smub.source.output = smub.OUTPUT_ON")
     smu.close()
     time.sleep(1)
@@ -40,6 +40,17 @@ def SMUbad_voltage_set(voltage):
     smu_vcm.query(":MEAS:CURR?")
     smu_vcm.close()
 
+def SMU_shutdown():
+    smu_vcm = rm.open_resource(smu_bad_addr)
+    smu = rm.open_resource(smu_2ch_addr)
+    
+    smu_vcm.write(":OUTP OFF")
+    smu.write("smua.source.output = smua.OUTPUT_OFF")
+    smu.write("smub.source.output = smub.OUTPUT_OFF")
+    time.sleep(1)
+    smu_vcm.close()
+    smu.close()
+    
 
 def dmm_measure_x3_setup():
     dmm1 = rm.open_resource(dmm1_addr)
@@ -90,25 +101,8 @@ def dmm_measure_x3_setup():
     return dmm1, dmm2, dmm3
 
 def dmm_measure_x3_single(dmm1, dmm2, dmm3):   
-    # dmm1 = rm.open_resource(dmm1_addr)
-    # dmm1.write(":SENS:VOLT:DC:RANGE 0.1")
-    # dmm1.write(":SENS:VOLT:DC:NPLC 100")
-    # dmm1.write("TRIG:SOUR BUS")
-    # dmm1.write("INIT\n")
-    # time.sleep(0.1)
-    # dmm2 = rm.open_resource(dmm2_addr)
-    # dmm2.write(":SENS:VOLT:DC:RANGE 1")
-    # dmm2.write(":SENS:VOLT:DC:NPLC 100")
-    # dmm2.write("TRIG:SOUR BUS")
-    # dmm2.write("INIT\n")
-    # time.sleep(0.1)
-    # dmm3 = rm.open_resource(dmm3_addr)
-    # dmm3.write(":SENS:VOLT:DC:RANGE 100")
-    # dmm3.write(":SENS:VOLT:DC:NPLC 100")
-    # dmm3.write("TRIG:SOUR BUS")
-    # dmm3.write("INIT\n")
-    # time.sleep(0.1)
-
+    # Sent at the same time to ensure the delays to the trigger command are same
+    # Tried this for debugging higher timings while measuring 1V and 100V, but kept for the principle of it
     with ThreadPoolExecutor() as executor:
         executor.submit(dmm1.write, "INIT\n")
         executor.submit(dmm2.write, "INIT\n")
@@ -119,33 +113,12 @@ def dmm_measure_x3_single(dmm1, dmm2, dmm3):
         executor.submit(dmm1.write, "*TRG\n")
         executor.submit(dmm2.write, "*TRG\n")
         executor.submit(dmm3.write, "*TRG\n")
-    # with ThreadPoolExecutor() as executor:
-    #     futures = [
-    #         executor.submit(dmm1.write, "*TRG\n"),
-    #         executor.submit(dmm2.write, "*TRG\n"),
-    #         executor.submit(dmm3.write, "*TRG\n")
-    #     ]
-    #     results = [float(future.result()) for future in futures]
-
+    # This should be 2 seconds + some small delay, but it realistically takes 4 seconds, or it bugs out during fetch
     time.sleep(4)
-
-    # Measure Voltages from SMUs - concurrency is not required
-    # with ThreadPoolExecutor() as executor:
-    #     futures = [
-    #         executor.submit(dmm1.query, "FETCH?"),
-    #         executor.submit(dmm2.query, "FETCH?"),
-    #         executor.submit(dmm3.query, "FETCH?")
-    #     ]
-    #     results = [float(future.result()) for future in futures]
 
     r11 = float(dmm1.query("FETCH?"))
     r21 = float(dmm2.query("FETCH?"))
     r31 = float(dmm3.query("FETCH?"))
-
-
-    # dmm1.close()
-    # dmm2.close()
-    # dmm3.close()
 
     # return results
     return r11, r21, r31
@@ -155,7 +128,8 @@ def dmm_measure_x3_deinit(dmm1, dmm2, dmm3):
     dmm2.close()
     dmm3.close()
 
-def dmm_measure_x3():   
+def dmm_measure_x3():
+    # Deprecated. Do not use. Although it should still work
     dmm1 = rm.open_resource(dmm1_addr)
     dmm1.write(":SENS:VOLT:DC:RANGE 0.1")
     dmm1.write(":SENS:VOLT:DC:NPLC 100")
@@ -201,6 +175,14 @@ def dmm_measure_x3():
     dmm3.close()
 
     return results
+
+def VSUP_voltage_set(voltage, current_limit):
+    psu = rm.open_resource(psu_addr)
+    psu.write("INST:NSEL 1")
+    psu.write(f"VOLT {voltage}")
+    psu.write(f"CURR {current_limit}")
+    psu.write("OUTP ON")  # Turn on output for the channel
+    psu.close()
 
 def vsense_res_disconnect():
     # --- Define settings for each channel ---

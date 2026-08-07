@@ -1,6 +1,20 @@
-
 # Calibration constants
 G0 = 50
+
+# Measurement settings
+VCM_low = 0.5
+VCM_high = 4
+VREF_voltage = 0.5
+VSUP_typical = 5
+
+Isense_high = 5e-5
+Isense_low = -Isense_high
+
+
+# Current and voltage limits for safety
+SMUchA_current_limit = 0.001
+SMUchB_voltage_limit = 20
+VSUP_current_limit = 0.001
 
 # Code constants
 DUMMY_MODE = 0

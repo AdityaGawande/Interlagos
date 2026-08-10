@@ -47,8 +47,8 @@ afg_addr = "TCPIP0::10.9.0.85::inst0::INSTR"
 # Google sheet constants (Do not change)
 csv_filename = 'gsheet_trimbit_values.csv'
 # SHEET_ID = '1hF4Snpfwg6-8w03q6VBuWfcwUNAFX5iWZxPIyqwjrc4'
-SHEET_ID = '1XKkL62lK_VKFQ7mGQ2JIEgxTk9gaWjvoAuwdnzKqC5g'
-google_sheetname1 = "Sheet1"
+SHEET_ID = '1d5e6bYR3UWXNtU9GqvDx5CAbm5iQKSkFBRPAPimTJb8'
+google_sheetname1 = "Python_sheet"
 
 # Visa transaction constants
 t = 0.1     # Changing this will break the I2C commands

@@ -1,13 +1,26 @@
 import pyvisa
 import time
-from constants import dmm1_addr, dmm2_addr, dmm3_addr, smu_2ch_addr, smu_bad_addr, psu_addr, afg_addr, res_connection_delay, SMUchA_current_limit, SMUchB_voltage_limit
+from constants import *
 from concurrent.futures import ThreadPoolExecutor
+
 rm = pyvisa.ResourceManager()
 
+# Easy to read wrappers
+def VREF_set(voltage):
+    SMUbad_voltage_set(voltage)
+
+def VCM_set(voltage):
+    SMUchA_voltage_set(voltage)
+
+def Isense_set(current):
+    SMUchB_current_set(current)
+
+# SMU section
 def SMUchA_voltage_set(voltage):
     smu = rm.open_resource(smu_2ch_addr)
     time.sleep(0.1)
     smu.write("smua.source.func = smua.OUTPUT_DCVOLTS")
+    smu.write(f"smua.source.rangev = {SMUchA_voltage_range}")
     smu.write(f"smua.source.levelv = {voltage}")
     smu.write(f"smua.source.limiti = {SMUchA_current_limit}")
     smu.write("smua.source.output = smua.OUTPUT_ON")
@@ -29,10 +42,10 @@ def SMUbad_voltage_set(voltage):
     smu_vcm = rm.open_resource(smu_bad_addr)
     # time.sleep(1)
     smu_vcm.write(":SOUR:FUNC VOLT")
-    smu_vcm.write(":SOUR:VOLT:RANG 200")
-    smu_vcm.write(":SENS:CURR:RANG 0.001")
-    smu_vcm.write(":SOUR:VOLT:ILIMIT 0.001")
-    smu_vcm.write(":SENS:CURR:RANG 0.001")
+    smu_vcm.write(f":SOUR:VOLT:RANG {SMUbad_voltage_range}")
+    smu_vcm.write(f":SENS:CURR:RANG {SMUbad_current_limit}")
+    smu_vcm.write(f":SOUR:VOLT:ILIMIT {SMUbad_current_limit}")
+    smu_vcm.write(f":SENS:CURR:RANG {SMUbad_current_limit}") # This is because the SMU does not allow massive jumps in either sense range or source limit (they are related)
     # time.sleep(1)
     smu_vcm.write(f":SOUR:VOLT {voltage}")
     smu_vcm.write(":OUTP ON")
@@ -50,54 +63,35 @@ def SMU_shutdown():
     time.sleep(1)
     smu_vcm.close()
     smu.close()
-    
 
+def SMUchA_output_off():
+    # Connect to the Keithley 2636B using the correct VISA address
+    smu = rm.open_resource(smu_2ch_addr)  # Replace with your actual VISA address
+
+    # Verify connection (optional)
+    # print("Connected to:", smu.query("*IDN?").strip())
+
+    smu.write("smua.source.output = smua.OUTPUT_OFF")       # Enable output
+    
+    smu.close()
+
+# DMM measurements section
 def dmm_measure_x3_setup():
     dmm1 = rm.open_resource(dmm1_addr)
     dmm1.write(":SENS:VOLT:DC:RANGE 0.1")
     dmm1.write(":SENS:VOLT:DC:NPLC 100")
     dmm1.write("TRIG:SOUR BUS")
-    # dmm1.write("INIT\n")
-    # time.sleep(0.1)
+
     dmm2 = rm.open_resource(dmm2_addr)
     dmm2.write(":SENS:VOLT:DC:RANGE 1")
     dmm2.write(":SENS:VOLT:DC:NPLC 100")
     dmm2.write("TRIG:SOUR BUS")
-    # dmm2.write("INIT\n")
-    # time.sleep(0.1)
+
     dmm3 = rm.open_resource(dmm3_addr)
     dmm3.write(":SENS:VOLT:DC:RANGE 100")
     dmm3.write(":SENS:VOLT:DC:NPLC 100")
     dmm3.write("TRIG:SOUR BUS")
-    # dmm3.write("INIT\n")
-    # time.sleep(0.1)
 
-    # # Trigger Voltages from SMUs - concurrency is required. storing their results is not required
-    # with ThreadPoolExecutor() as executor:
-    #     futures = [
-    #         executor.submit(dmm1.write, "*TRG\n"),
-    #         executor.submit(dmm2.write, "*TRG\n"),
-    #         executor.submit(dmm3.write, "*TRG\n")
-    #     ]
-    #     results = [float(future.result()) for future in futures]
-
-    # time.sleep(4)
-
-    # # Measure Voltages from SMUs - concurrency is not required
-    # with ThreadPoolExecutor() as executor:
-    #     futures = [
-    #         executor.submit(dmm1.query, "FETCH?"),
-    #         executor.submit(dmm2.query, "FETCH?"),
-    #         executor.submit(dmm3.query, "FETCH?")
-    #     ]
-    #     results = [float(future.result()) for future in futures]
-
-
-    # dmm1.close()
-    # dmm2.close()
-    # dmm3.close()
-
-    # return results
     return dmm1, dmm2, dmm3
 
 def dmm_measure_x3_single(dmm1, dmm2, dmm3):   
@@ -176,78 +170,34 @@ def dmm_measure_x3():
 
     return results
 
-def VSUP_voltage_set(voltage, current_limit):
+# PSU commands section
+def VSUP_voltage_set(IC_num, voltage):
     psu = rm.open_resource(psu_addr)
-    psu.write("INST:NSEL 1")
+    psu.write(f"INST:NSEL {IC_num}")
     psu.write(f"VOLT {voltage}")
-    psu.write(f"CURR {current_limit}")
+    psu.write(f"CURR {VSUP_current_limit}")
     psu.write("OUTP ON")  # Turn on output for the channel
     psu.close()
 
-def vsense_res_disconnect():
-    # --- Define settings for each channel ---
-    channel_settings = {
-        1: {'voltage': 0, 'current': 0.20},
-        2: {'voltage': 5, 'current': 0.20},
-        3: {'voltage': 5, 'current': 0.20}
-    }
-
+def circuit_config_trim():
     psu = rm.open_resource(psu_addr)
-
-    # Apply settings to each channel
-    for channel, settings in channel_settings.items():
-        voltage = settings['voltage']
-        current = settings['current']
-        
-        psu.write(f"INST:NSEL {channel}")
-        psu.write(f"VOLT {voltage}")
-        psu.write(f"CURR {current}")
-        psu.write("OUTP ON")  # Turn on output for the channel
-
-        # print(f"Channel {channel} set to {voltage} V, {current} A")
-
+    psu.write(f"INST:NSEL 3")
+    psu.write(f"VOLT 5")
+    psu.write(f"CURR {relay_current_limit}")
+    psu.write("OUTP ON")  # Turn on output for the channel
     time.sleep(res_connection_delay)
+    psu.close() 
 
-    psu.close()
-
-def vsense_res_connect():
-    # --- Define settings for each channel ---
-    channel_settings = {
-        1: {'voltage': 5, 'current': 0.2},
-        2: {'voltage': 0, 'current': 0.2},  # Use parameter here
-        3: {'voltage': 5, 'current': 0.2}
-    }
-
+def circuit_config_amp():
     psu = rm.open_resource(psu_addr)
-    # print("Connected to:", psu.query("*IDN?").strip())
+    psu.write(f"INST:NSEL 3")
+    psu.write(f"VOLT 0")
+    psu.write(f"CURR {relay_current_limit}")
+    psu.write("OUTP ON")  # Turn on output for the channel
+    time.sleep(res_connection_delay)
+    psu.close() 
 
-    # Apply settings to each channel
-    for channel, settings in channel_settings.items():
-        voltage = settings['voltage']
-        current = settings['current']
-        
-        psu.write(f"INST:NSEL {channel}")
-        psu.write(f"VOLT {voltage}")
-        psu.write(f"CURR {current}")
-        psu.write("OUTP ON")
-
-        # print(f"Channel {channel} set to {voltage} V, {current} A")
-
-    time.sleep(res_connection_delay)  # Delay to stabilize output
-
-    psu.close()
-
-def SMUchA_output_off():
-    # Connect to the Keithley 2636B using the correct VISA address
-    smu = rm.open_resource(smu_2ch_addr)  # Replace with your actual VISA address
-
-    # Verify connection (optional)
-    # print("Connected to:", smu.query("*IDN?").strip())
-
-    smu.write("smua.source.output = smua.OUTPUT_OFF")       # Enable output
-    
-    smu.close()
-
+# Sanity checks
 def instrument_check():
     dmm1 = rm.open_resource(dmm1_addr)
     print("Connected to:", dmm1.query("*IDN?").strip())
@@ -276,3 +226,59 @@ def instrument_check():
     psu = rm.open_resource(psu_addr)
     print("Connected to:", psu.query("*IDN?").strip())
     psu.close()
+
+# def vsense_res_disconnect():
+#     # --- Define settings for each channel ---
+#     channel_settings = {
+#         1: {'voltage': 0, 'current': 0.20},
+#         2: {'voltage': 5, 'current': 0.20},
+#         3: {'voltage': 5, 'current': 0.20}
+#     }
+
+#     psu = rm.open_resource(psu_addr)
+
+#     # Apply settings to each channel
+#     for channel, settings in channel_settings.items():
+#         voltage = settings['voltage']
+#         current = settings['current']
+        
+#         psu.write(f"INST:NSEL {channel}")
+#         psu.write(f"VOLT {voltage}")
+#         psu.write(f"CURR {current}")
+#         psu.write("OUTP ON")  # Turn on output for the channel
+
+#         # print(f"Channel {channel} set to {voltage} V, {current} A")
+
+#     time.sleep(res_connection_delay)
+
+#     psu.close()
+
+# def vsense_res_connect():
+#     # --- Define settings for each channel ---
+#     channel_settings = {
+#         1: {'voltage': 5, 'current': 0.2},
+#         2: {'voltage': 0, 'current': 0.2},  # Use parameter here
+#         3: {'voltage': 5, 'current': 0.2}
+#     }
+
+#     psu = rm.open_resource(psu_addr)
+#     # print("Connected to:", psu.query("*IDN?").strip())
+
+#     # Apply settings to each channel
+#     for channel, settings in channel_settings.items():
+#         voltage = settings['voltage']
+#         current = settings['current']
+        
+#         psu.write(f"INST:NSEL {channel}")
+#         psu.write(f"VOLT {voltage}")
+#         psu.write(f"CURR {current}")
+#         psu.write("OUTP ON")
+
+#         # print(f"Channel {channel} set to {voltage} V, {current} A")
+
+#     time.sleep(res_connection_delay)  # Delay to stabilize output
+
+#     psu.close()
+
+
+

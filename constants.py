@@ -4,10 +4,10 @@ G0 = 50
 # Measurement settings
 VCM_low = 0.5
 VCM_high = 4
-VREF_voltage = 0.5
+VREF_voltage = 2.5
 VSUP_typical = 5
 
-Isense_high = 5e-5
+Isense_high = 5e-3
 Isense_low = -Isense_high
 
 
@@ -15,6 +15,10 @@ Isense_low = -Isense_high
 SMUchA_current_limit = 0.001
 SMUchB_voltage_limit = 20
 VSUP_current_limit = 0.001
+relay_current_limit = 0.1
+SMUchA_voltage_range = 20
+SMUbad_voltage_range = 20
+SMUbad_current_limit = 0.001
 
 # Code constants
 DUMMY_MODE = 0
@@ -52,3 +56,4 @@ google_sheetname1 = "Python_sheet"
 
 # Visa transaction constants
 t = 0.1     # Changing this will break the I2C commands
+afg_load_res = 67

@@ -93,10 +93,12 @@ def reg_ff_write(vdd_sw, prog_enable, t = 0.01):
 def testmode_entry(t=0.01):
     
     print("Disconnecting Vsense resistor")
-    instr_control.vsense_res_disconnect()
+    # instr_control.vsense_res_disconnect()
+    instr_control.circuit_config_trim()
 
     print("Set Vref to 8V")
-    instr_control.SMUchA_voltage_set(8)
+    instr_control.VREF_set(8)
+    instr_control.VSUP_voltage_set(1, 5)
     # visa_pwr_update_util.testmode_pwr_set()
     time.sleep(vref_set_to_testmode_seq_delay)
 
@@ -124,8 +126,11 @@ def testmode_exit(t=0.01):
     i2c_reg_write(reg_addr, data, t)
 
     print("Connecting Vsense resistor")
-    instr_control.vsense_res_connect()
-    instr_control.SMUchA_voltage_set(2.5)
+    # instr_control.vsense_res_connect()
+    instr_control.circuit_config_amp()
+    # instr_control.SMUchA_voltage_set(2.5)
+    instr_control.VREF_set(2.5)
+    instr_control.VCM_set(0.5)
     # Set Isense to 0 - SMUchB
     instr_control.SMUchB_current_set(0)
 
@@ -152,15 +157,15 @@ def trimbits_dump_full():
 def trimbits_dump_res():
     testmode_entry()
 
-    regs = csv_utils.csv_reg_value_extraction(1, 2, 7)
+    # regs = csv_utils.csv_reg_value_extraction(1, 2, 7)
 
-    for i in range(2,7):
-        print(f"Writing into reg {i}")
-        i2c_reg_write(i, regs[i], t)
+    # for i in range(2,7):
+    #     print(f"Writing into reg {i}")
+    #     i2c_reg_write(i, regs[i], t)
 
-    time.sleep(2)
+    # time.sleep(2)
 
-    testmode_exit()
+    # testmode_exit()
 
 def burn_efuse():
     input("Change program done bit to 1")

@@ -10,11 +10,11 @@ def Starter():
 
 def gain_error_measurement_init():
     # Set power supply from this
-    instr_control.VSUP_voltage_set(VSUP_typical, VSUP_current_limit)
+    instr_control.VSUP_voltage_set(1, VSUP_typical)
     # Set VREF to 2.5V - SMUchA
-    instr_control.SMUchA_voltage_set(VREF_voltage)
+    instr_control.SMUchA_voltage_set(VCM_low)
     # Set VCM to 0.5V - SMU_bad
-    instr_control.SMUbad_voltage_set(VCM_low) 
+    instr_control.SMUbad_voltage_set(VREF_voltage) 
 
 def gain_error_measurement_single(Gain_ideal, dmm1, dmm2, dmm3, iterator):
     # Set Isense_high
@@ -48,21 +48,26 @@ def gain_error_measurement(n, Gain_ideal, PLC):
     
 def cmrr_measurement_init():
     # Set power supply from this
-    instr_control.VSUP_voltage_set(VSUP_typical, VSUP_current_limit)
+    # instr_control.VSUP_voltage_set(VSUP_typical, VSUP_current_limit)
+    instr_control.VSUP_voltage_set(1, VSUP_typical)
     # Set VREF to 2.5V - SMUchA
-    instr_control.SMUchA_voltage_set(VREF_voltage)
+    instr_control.VREF_set(VREF_voltage)
+    # instr_control.SMUchA_voltage_set(VREF_voltage)
     # Set Isense to zero
     input("Recommendation - Inputs should be shorted on the board")
-    instr_control.SMUchB_current_set(0)
+    # instr_control.SMUchB_current_set(0)
+    instr_control.Isense_set(0)
     
 def cmrr_measurement_single(Gain_ideal, dmm1, dmm2, dmm3, iterator):
     # Set VCM to 0.5V - SMU_bad
-    instr_control.SMUbad_voltage_set(VCM_low)
+    # instr_control.SMUbad_voltage_set(VCM_low)
+    instr_control.VCM_set(VCM_low)
     # Measure Vsense(V21) and Vout(VO1) at the same time
     V21, VO1, VCM1 = instr_control.dmm_measure_x3_single(dmm1, dmm2, dmm3)
 
     # Set VCM to 0.5V - SMU_bad
-    instr_control.SMUbad_voltage_set(VCM_high)
+    # instr_control.SMUbad_voltage_set(VCM_high)
+    instr_control.VCM_set(VCM_high)
     # Measure Vsense(V22) and Vout(VO2) at the same time
     V22, VO2, VCM2 = instr_control.dmm_measure_x3_single(dmm1, dmm2, dmm3)
 

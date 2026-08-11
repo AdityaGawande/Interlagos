@@ -7,6 +7,13 @@
 # Update value into google sheet (manually)
 # Loopback
 
+# Bugs -
+# Command for setting data voltage is not working
+# Change instrument for VREF and IN+/IN-
+# Change PSU command - one for each IC1, IC2 and Relay
+# AFG is showing an error - Setitngs conflict - burst period increased to fit entire burst
+# Turn instruments on and off in the init portion (atleast keep a note of it)
+
 import i2c
 import gsheet_util
 import instr_top
@@ -18,7 +25,7 @@ import standard_tests
 
 def update_trimbit_values():
     print("Updating values from Google sheet...")
-    gsheet_util.csv_file_update()
+    # gsheet_util.csv_file_update()
     # input("Press Enter to enter test mode...")
     # print("Entering test mode...")
     # i2c.testmode_entry() # Update this function - change instrument for vref and vsense connection
@@ -38,14 +45,14 @@ def update_trimbit_values():
 
 standard_tests.Starter()
 
-# length = 10 
+length = 3
 # PLC = 100
 # standard_tests.gain_error_measurement(length, Gain_ideal, PLC)
 # print()
 
 update_trimbit_values()
 
-# length = 10 
+length = 3 
 # PLC = 100
 # standard_tests.gain_error_measurement(length, Gain_ideal, PLC)
 # print()

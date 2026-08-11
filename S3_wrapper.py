@@ -8,10 +8,8 @@
 # Loopback
 
 # Bugs -
-# Command for setting data voltage is not working
+# 
 # Change instrument for VREF and IN+/IN-
-# Change PSU command - one for each IC1, IC2 and Relay
-# AFG is showing an error - Setitngs conflict - burst period increased to fit entire burst
 # Turn instruments on and off in the init portion (atleast keep a note of it)
 
 import i2c
@@ -24,14 +22,15 @@ import standard_tests
 # 1. Update trimbit values from sheet - all values (enter testmode, write bits and exit. Ask for ACK before each step)
 
 def update_trimbit_values():
-    print("Updating values from Google sheet...")
+    # print("Updating values from Google sheet...")
     # gsheet_util.csv_file_update()
     # input("Press Enter to enter test mode...")
     # print("Entering test mode...")
     # i2c.testmode_entry() # Update this function - change instrument for vref and vsense connection
     # input("Press Enter to write trim bits from sheet...")
     # print("Writing trim bits...")
-    i2c.trimbits_dump_res()
+    # i2c.trimbits_dump_res()
+    i2c.testmode_entry_debug()
     # input("Press Enter to exit test mode...")
     # print("Exiting test mode...")
     # i2c.testmode_exit()

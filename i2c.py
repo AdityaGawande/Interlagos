@@ -117,6 +117,29 @@ def testmode_entry(t=0.01):
     # visa_pwr_update_util.testmode_pwr_ref_reset()
     time.sleep(sleep_after_testmode_entry)
 
+def testmode_entry_debug(t=0.01):
+    print("Disconnecting Vsense resistor")
+    instr_control.circuit_config_trim()
+
+    print("Set Vref to 8V")
+    instr_control.VREF_set(8)
+    instr_control.VSUP_voltage_set(1, 5)
+    time.sleep(vref_set_to_testmode_seq_delay)
+
+    seq_without_buf = [1,0,1,0,0,1,0,1,0,1,1,0] # This is 12 bits
+    seq = [1]*4 + seq_without_buf + [1]*4   # This is 20 bits
+
+    # First bit needs to be an offset thing always
+    arr_high = seq
+    arr_low = seq
+
+    # Call the provided SMU sequence function
+    run_smu_sequence(20, arr_high, arr_low, t)
+
+    instr_control.SMUchA_output_off()
+
+    time.sleep(sleep_after_testmode_entry)
+
 def testmode_exit(t=0.01):
     
     reg_addr = 8   #f2

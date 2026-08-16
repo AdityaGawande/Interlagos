@@ -1,0 +1,39 @@
+Test started at 2026-08-16 10:21:41.884775
+
+VBG trimbit changed to 1
+Updating Python_sheet...
+Bandgap Voltage in testmode is 0.945476V
+Bandgap Voltage in testmode is 0.945388V
+VBG trimbit changed to 2
+Updating Python_sheet...
+Bandgap Voltage in testmode is 0.964329V
+Bandgap Voltage in testmode is 0.964533V
+VBG trimbit changed to 4
+Updating Python_sheet...
+Bandgap Voltage in testmode is 1.001100V
+Bandgap Voltage in testmode is 1.000980V
+VBG trimbit changed to 8
+Updating Python_sheet...
+Bandgap Voltage in testmode is 1.070336V
+Bandgap Voltage in testmode is 1.070311V
+VBG trimbit changed to 9
+Updating Python_sheet...
+Bandgap Voltage in testmode is 1.087049V
+Bandgap Voltage in testmode is 1.087138V
+VBG trimbit changed to 10
+Updating Python_sheet...
+Bandgap Voltage in testmode is 1.103666V
+Bandgap Voltage in testmode is 1.103724V
+VBG trimbit changed to 11
+Updating Python_sheet...
+Bandgap Voltage in testmode is 1.120283V
+Bandgap Voltage in testmode is 1.120396V
+IREF current is 1122nA
+Bandgap Voltage in testmode is 1.120250V
+Testmode should be off.
+Check VBG
+CLK_freq_sel trimbit changed to 4
+OSC_accuracy trimbit changed to 63
+Updating Python_sheet...
+Frequency in testmode is 26.256KHz
+Frequency in testmode is 26.261KHz

@@ -1,7 +1,7 @@
 Parameter,Value,BinaryLength,Valid?
-vbg,13,5,TRUE
+vbg,14,5,TRUE
 vbg_tc,16,5,TRUE
-iref,27,5,TRUE
+iref,31,5,TRUE
 osc_core_output,63,6,TRUE
 chopping_freq,4,3,TRUE
 R1R2_k,0,1,TRUE
@@ -18,8 +18,8 @@ testmode,8,8,TRUE
 efuse_prog_enable,0,1,TRUE
 efuse_reload,0,1,TRUE
 pwr_5v_enable,0,1,TRUE
-reg00,176,8,10110000
-reg01,74,8,01001010
+reg00,112,8,01110000
+reg01,75,8,01001011
 reg02,0,8,00000000
 reg03,0,8,00000000
 reg04,0,8,00000000

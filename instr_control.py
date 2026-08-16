@@ -43,7 +43,7 @@ def SMUbad_voltage_set(voltage):
     # time.sleep(1)
     smu_vcm.write(":SOUR:FUNC VOLT")
     smu_vcm.write(f":SOUR:VOLT:RANG {SMUbad_voltage_range}")
-    smu_vcm.write(f":SENS:CURR:RANG {SMUbad_current_limit}")
+    smu_vcm.write(f":SENS:CURR:RANG {SMUbad_current_limit*4}")
     smu_vcm.write(f":SOUR:VOLT:ILIMIT {SMUbad_current_limit}")
     smu_vcm.write(f":SENS:CURR:RANG {SMUbad_current_limit}") # This is because the SMU does not allow massive jumps in either sense range or source limit (they are related)
     # time.sleep(1)
@@ -64,6 +64,17 @@ def SMU_shutdown():
     smu_vcm.close()
     smu.close()
 
+def SMUbad_shutdown():
+    smu_vcm = rm.open_resource(smu_bad_addr)
+    # smu = rm.open_resource(smu_2ch_addr)
+    
+    smu_vcm.write(":OUTP OFF")
+    # smu.write("smua.source.output = smua.OUTPUT_OFF")
+    # smu.write("smub.source.output = smub.OUTPUT_OFF")
+    # time.sleep(1)
+    smu_vcm.close()
+    # smu.close()
+
 def SMUchA_output_off():
     # Connect to the Keithley 2636B using the correct VISA address
     smu = rm.open_resource(smu_2ch_addr)  # Replace with your actual VISA address
@@ -74,6 +85,91 @@ def SMUchA_output_off():
     smu.write("smua.source.output = smua.OUTPUT_OFF")       # Enable output
     
     smu.close()
+
+# PSU section
+
+# AFG section
+def CLK_DC_voltage_set(voltage):
+    afg = rm.open_resource(afg_addr)
+    afg.write("SOUR1:BURST:STATE OFF")
+    afg.write("OUTP1 OFF")
+    afg.write("SOUR1:FUNC DC")
+    afg.write(f"OUTP1:LOAD {afg_load_res}")
+    afg.write(f"SOUR1:VOLT:OFFS {voltage}")
+    afg.write("OUTP1 ON")
+
+# DMM section
+def dmm_measure_clk():
+    dmm2 = rm.open_resource(dmm2_addr)
+    dmm2.write("CONF:FREQ")
+    dmm2.write("FREQ:VOLT:RANG 1")
+    dmm2.write("FREQ:RANG:LOW 200")
+    dmm2.write("FREQ:APER 1")
+    dmm2.write("TRIG:SOUR BUS")
+    dmm2.write("INIT")
+    time.sleep(0.5)
+    dmm2.write("*TRG")
+    time.sleep(1.5)
+    frequency = float(dmm2.query("FETCH?"))/1000
+    print(f"Frequency in testmode is {frequency:.3f}KHz")
+    dmm2.close()
+
+def dmm_measure_vbg():
+    dmm2 = rm.open_resource(dmm2_addr)
+    dmm2.write("CONF:VOLT")
+    dmm2.write(":SENS:VOLT:DC:RANGE 10")
+    dmm2.write(":SENS:VOLT:DC:NPLC 100")
+    dmm2.write("TRIG:SOUR BUS")
+    dmm2.write("INIT")
+    time.sleep(0.5)
+    dmm2.write("*TRG")
+    time.sleep(1.5)
+    voltage = float(dmm2.query("FETCH?"))
+    print(f"Bandgap Voltage in testmode is {voltage:.6f}V")
+    dmm2.close()
+
+def dmm_measure_IQ():
+    dmm3 = rm.open_resource(dmm3_addr)
+    dmm3.write("CONF:CURR")
+    dmm3.write(":SENS:CURR:DC:RANGE 0.001")
+    dmm3.write(":SENS:CURR:DC:NPLC 100")
+    dmm3.write("TRIG:SOUR BUS")
+    dmm3.write("INIT")
+    time.sleep(0.5)
+    dmm3.write("*TRG")
+    time.sleep(1.5)
+    current = float(dmm3.query("FETCH?"))
+    # print(f"Supply current is {current*10^6}uA")
+    dmm3.close()
+    return current
+
+def dmm_measure_IREF():
+    dmm1 = rm.open_resource(dmm1_addr)
+    dmm1.write("CONF:CURR")
+    dmm1.write(":SENS:CURR:DC:RANGE 0.0001")
+    dmm1.write(":SENS:CURR:DC:NPLC 100")
+    dmm1.write("TRIG:SOUR BUS")
+    dmm1.write("INIT")
+    time.sleep(0.5)
+    dmm1.write("*TRG")
+    time.sleep(2)
+    current = float(dmm1.query("FETCH?"))
+    print(f"IREF current is {(current*(float(1000000000))):.0f}nA")
+    # print(f"Supply current is {current*10^6}uA")
+    dmm1.close()
+    # return current
+
+def IREF_current_check():
+    current = dmm_measure_IREF()
+    print(f"Supply current in testmode is {(current*(float(1000000000))):.0f}nA")
+
+def Testmode_current_check():
+    current = dmm_measure_IQ()
+    print(f"Supply current in testmode is {(current*(float(1000000))):.2f}uA")
+
+def Amplifier_current_check():
+    current = dmm_measure_IQ()
+    print(f"Supply current in amplifier mode is {(current*(float(1000000))):.2f}uA")
 
 # DMM measurements section
 def dmm_measure_x3_setup():
@@ -178,6 +274,15 @@ def VSUP_voltage_set(IC_num, voltage):
     psu.write(f"CURR {VSUP_current_limit}")
     psu.write("OUTP ON")  # Turn on output for the channel
     psu.close()
+
+def VSUP_voltage_reset(IC_num):
+    # Turns the supply off and on - to ensure testmode is exited
+    psu = rm.open_resource(psu_addr)
+    psu.write(f"INST:NSEL {IC_num}")
+    psu.write("OUTP OFF")  # Turn on output for the channel
+    time.sleep(0.3)
+    psu.write("OUTP ON")  # Turn on output for the channel
+    psu.close()   
 
 def circuit_config_trim():
     psu = rm.open_resource(psu_addr)

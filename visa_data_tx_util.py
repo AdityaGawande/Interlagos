@@ -1,6 +1,6 @@
 import pyvisa
 import time
-from constants import smu_2ch_addr, afg_addr, afg_load_res, SMUchA_voltage_range
+from constants import *
 
 # Low and high level of the data and clock in volts
 low_level = 0.005
@@ -240,9 +240,10 @@ def run_smu_sequence_debug(length, arr_high, arr_low, t=0.00025):
     smu.write("smua.source.func = smua.OUTPUT_DCVOLTS")
     smu.write(f"smua.source.rangev = {SMUchA_voltage_range}")
     smu.write(f"smua.source.levelv = {high_level}")
+    smu.write(f"smua.source.limiti = {SMUchA_current_limit}")
     smu.write("smua.source.output = smua.OUTPUT_ON")
 
-    print("Starting SMU sequence...")
+    # print("Starting SMU sequence...")
 
     for i in range(0, length):
         if arr_low[i]:
@@ -266,4 +267,4 @@ def run_smu_sequence_debug(length, arr_high, arr_low, t=0.00025):
         # input("Data transition here")
         
         
-    print("SMU sequence complete.")
+    # print("SMU sequence complete.")

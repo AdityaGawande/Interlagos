@@ -1,0 +1,902 @@
+Test started at 2026-08-16 01:35:54.081766
+
+Starting SMU sequence...
+SMU sequence complete.
+Supply current in testmode is 186.47uA
+Frequency in testmode is 89.943KHz
+[1, 1, 1, 1, 0, 0, 1, 0]
+[0, 0, 0, 0, 1, 0, 0, 0]
+Starting SMU sequence...
+SMU sequence complete.
+VBG trimbit changed to 0
+Updating Python_sheet...
+0 =  [0, 0, 0, 0, 0, 0, 0, 0]
+1 =  [0, 1, 1, 1, 0, 1, 0, 0]
+2 =  [0, 0, 0, 0, 0, 0, 0, 0]
+3 =  [0, 0, 0, 0, 0, 0, 0, 0]
+4 =  [0, 0, 0, 0, 0, 0, 0, 0]
+5 =  [0, 0, 0, 0, 0, 0, 0, 0]
+6 =  [1, 1, 0, 0, 0, 0, 0, 0]
+7 =  [0, 1, 1, 0, 0, 1, 1, 1]
+8 =  [0, 0, 0, 0, 1, 0, 0, 0]
+9 =  [1, 1, 1, 1, 1, 0, 0, 0]
+Writing into reg 0
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+Starting SMU sequence...
+SMU sequence complete.
+Writing into reg 1
+[0, 0, 0, 0, 0, 0, 0, 1]
+[0, 1, 1, 1, 0, 1, 0, 0]
+Starting SMU sequence...
+SMU sequence complete.
+Bandgap Voltage in testmode is 0.925632V
+Bandgap Voltage in testmode is 0.925840V
+Bandgap Voltage in testmode is 0.925842V
+Bandgap Voltage in testmode is 0.925771V
+Bandgap Voltage in testmode is 0.925775V
+VBG trimbit changed to 13
+Updating Python_sheet...
+0 =  [1, 0, 0, 0, 0, 0, 0, 0]
+1 =  [0, 1, 1, 1, 0, 0, 1, 0]
+2 =  [0, 0, 0, 0, 0, 0, 0, 0]
+3 =  [0, 0, 0, 0, 0, 0, 0, 0]
+4 =  [0, 0, 0, 0, 0, 0, 0, 0]
+5 =  [0, 0, 0, 0, 0, 0, 0, 0]
+6 =  [1, 1, 0, 0, 0, 0, 0, 0]
+7 =  [0, 1, 1, 0, 0, 1, 1, 1]
+8 =  [0, 0, 0, 0, 1, 0, 0, 0]
+9 =  [1, 1, 1, 1, 1, 0, 0, 0]
+Writing into reg 0
+[0, 0, 0, 0, 0, 0, 0, 0]
+[1, 0, 0, 0, 0, 0, 0, 0]
+Starting SMU sequence...
+SMU sequence complete.
+Writing into reg 1
+[0, 0, 0, 0, 0, 0, 0, 1]
+[0, 1, 1, 1, 0, 0, 1, 0]
+Starting SMU sequence...
+SMU sequence complete.
+Bandgap Voltage in testmode is 0.945328V
+Bandgap Voltage in testmode is 0.945349V
+Bandgap Voltage in testmode is 0.945222V
+Bandgap Voltage in testmode is 0.944990V
+Bandgap Voltage in testmode is 0.945084V
+[1, 1, 1, 1, 0, 0, 1, 0]
+[0, 0, 0, 0, 1, 1, 1, 1]
+Starting SMU sequence...
+SMU sequence complete.
+Supply current in amplifier mode is 90.68uA
+Starting SMU sequence...
+SMU sequence complete.
+Supply current in testmode is 189.92uA
+Frequency in testmode is 88.719KHz
+[1, 1, 1, 1, 0, 0, 1, 0]
+[0, 0, 0, 0, 1, 0, 0, 0]
+Starting SMU sequence...
+SMU sequence complete.
+VBG trimbit changed to 0
+Updating Python_sheet...
+0 =  [0, 0, 0, 0, 0, 0, 0, 0]
+1 =  [0, 1, 1, 1, 0, 1, 0, 0]
+2 =  [0, 0, 0, 0, 0, 0, 0, 0]
+3 =  [0, 0, 0, 0, 0, 0, 0, 0]
+4 =  [0, 0, 0, 0, 0, 0, 0, 0]
+5 =  [0, 0, 0, 0, 0, 0, 0, 0]
+6 =  [1, 1, 0, 0, 0, 0, 0, 0]
+7 =  [0, 1, 1, 0, 0, 1, 1, 1]
+8 =  [0, 0, 0, 0, 1, 0, 0, 0]
+9 =  [1, 1, 1, 1, 1, 0, 0, 0]
+Writing into reg 0
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+Starting SMU sequence...
+SMU sequence complete.
+Writing into reg 1
+[0, 0, 0, 0, 0, 0, 0, 1]
+[0, 1, 1, 1, 0, 1, 0, 0]
+Starting SMU sequence...
+SMU sequence complete.
+Traceback (most recent call last):
+  File "/home/gajen/Documents/Interlagos/Interlagos_local/lib/python3.14/site-packages/pyvisa_py/tcpip.py", line 491, in after_parsing
+    self.interface = Vxi11CoreClient(host_address, port, self.open_timeout)
+                     ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gajen/Documents/Interlagos/Interlagos_local/lib/python3.14/site-packages/pyvisa_py/tcpip.py", line 395, in __init__
+    rpc.TCPClient.__init__(self, host, prog, vers, open_timeout)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gajen/Documents/Interlagos/Interlagos_local/lib/python3.14/site-packages/pyvisa_py/protocols/rpc.py", line 823, in __init__
+    pmap = TCPPortMapperClient(host, open_timeout)
+  File "/home/gajen/Documents/Interlagos/Interlagos_local/lib/python3.14/site-packages/pyvisa_py/protocols/rpc.py", line 803, in __init__
+    RawTCPClient.__init__(self, host, PMAP_PROG, PMAP_VERS, PMAP_PORT, open_timeout)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gajen/Documents/Interlagos/Interlagos_local/lib/python3.14/site-packages/pyvisa_py/protocols/rpc.py", line 454, in __init__
+    self.connect(1e-3 * open_timeout)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gajen/Documents/Interlagos/Interlagos_local/lib/python3.14/site-packages/pyvisa_py/protocols/rpc.py", line 488, in connect
+    raise RPCError("can't connect to server")
+pyvisa_py.protocols.rpc.RPCError: can't connect to server
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/gajen/Documents/Interlagos/Interlagos_local/lib/python3.14/site-packages/pyvisa_py/highlevel.py", line 196, in open
+    sess = cls(session, resource_name, parsed, open_timeout)
+  File "/home/gajen/Documents/Interlagos/Interlagos_local/lib/python3.14/site-packages/pyvisa_py/tcpip.py", line 86, in __new__
+    return newcls(resource_manager_session, resource_name, parsed, open_timeout)
+  File "/home/gajen/Documents/Interlagos/Interlagos_local/lib/python3.14/site-packages/pyvisa_py/sessions.py", line 329, in __init__
+    self.after_parsing()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "/home/gajen/Documents/Interlagos/Interlagos_local/lib/python3.14/site-packages/pyvisa_py/tcpip.py", line 496, in after_parsing
+    raise OpenError()
+pyvisa_py.sessions.OpenError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/gajen/Documents/Interlagos/S3_wrapper.py", line 205, in <module>
+    VBG_stability()
+    ~~~~~~~~~~~~~^^
+  File "/home/gajen/Documents/Interlagos/S3_wrapper.py", line 89, in VBG_stability
+    instr_control.dmm_measure_vbg()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/gajen/Documents/Interlagos/instr_control.py", line 105, in dmm_measure_vbg
+    dmm2 = rm.open_resource(dmm2_addr)
+  File "/home/gajen/Documents/Interlagos/Interlagos_local/lib/python3.14/site-packages/pyvisa/highlevel.py", line 3302, in open_resource
+    res.open(access_mode, open_timeout)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gajen/Documents/Interlagos/Interlagos_local/lib/python3.14/site-packages/pyvisa/resources/resource.py", line 290, in open
+    self.session, status = self._resource_manager.open_bare_resource(
+                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self._resource_name, access_mode, open_timeout
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/gajen/Documents/Interlagos/Interlagos_local/lib/python3.14/site-packages/pyvisa/highlevel.py", line 3227, in open_bare_resource
+    return self.visalib.open(self.session, resource_name, access_mode, open_timeout)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gajen/Documents/Interlagos/Interlagos_local/lib/python3.14/site-packages/pyvisa_py/highlevel.py", line 198, in open
+    return VISASession(0), self.handle_return_value(None, e.error_code)
+                           ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/home/gajen/Documents/Interlagos/Interlagos_local/lib/python3.14/site-packages/pyvisa/highlevel.py", line 252, in handle_return_value
+    raise errors.VisaIOError(rv)
+pyvisa.errors.VisaIOError: VI_ERROR_RSRC_NFOUND (-1073807343): Insufficient location information or the requested device or resource is not present in the system.
+(Interlagos_local) gajen@Gajendranath:~/Documents/Interlagos$ python S3_wrapper.py
+Test started at 2026-08-16 01:47:21.572611
+
+Supply current in testmode is 90.22uA
+^CTraceback (most recent call last):
+  File "/home/gajen/Documents/Interlagos/S3_wrapper.py", line 214, in <module>
+    VBG_stability()
+    ~~~~~~~~~~~~~^^
+  File "/home/gajen/Documents/Interlagos/S3_wrapper.py", line 91, in VBG_stability
+    instr_control.dmm_measure_clk()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/gajen/Documents/Interlagos/instr_control.py", line 99, in dmm_measure_clk
+    time.sleep(1.5)
+    ~~~~~~~~~~^^^^^
+KeyboardInterrupt
+
+(Interlagos_local) gajen@Gajendranath:~/Documents/Interlagos$ python S3_wrapper.py
+Test started at 2026-08-16 01:47:37.364817
+
+Supply current in testmode is 187.83uA
+Frequency in testmode is 89.873KHz
+VBG trimbit changed to 0
+Updating Python_sheet...
+Writing into reg 0
+Writing into reg 1
+Writing into reg 7
+Bandgap Voltage in testmode is 0.925535V
+Bandgap Voltage in testmode is 0.925657V
+Bandgap Voltage in testmode is 0.925686V
+Bandgap Voltage in testmode is 0.925722V
+Bandgap Voltage in testmode is 0.925641V
+VBG trimbit changed to 1
+Updating Python_sheet...
+Writing into reg 0
+Writing into reg 1
+Writing into reg 7
+Bandgap Voltage in testmode is 0.945071V
+Bandgap Voltage in testmode is 0.944990V
+Bandgap Voltage in testmode is 0.944918V
+Bandgap Voltage in testmode is 0.944881V
+Bandgap Voltage in testmode is 0.945014V
+VBG trimbit changed to 5
+Updating Python_sheet...
+Writing into reg 0
+Writing into reg 1
+Writing into reg 7
+Traceback (most recent call last):
+  File "/home/gajen/Documents/Interlagos/Interlagos_local/lib/python3.14/site-packages/pyvisa_py/tcpip.py", line 491, in after_parsing
+    self.interface = Vxi11CoreClient(host_address, port, self.open_timeout)
+                     ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gajen/Documents/Interlagos/Interlagos_local/lib/python3.14/site-packages/pyvisa_py/tcpip.py", line 395, in __init__
+    rpc.TCPClient.__init__(self, host, prog, vers, open_timeout)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gajen/Documents/Interlagos/Interlagos_local/lib/python3.14/site-packages/pyvisa_py/protocols/rpc.py", line 828, in __init__
+    RawTCPClient.__init__(self, host, prog, vers, port, open_timeout)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gajen/Documents/Interlagos/Interlagos_local/lib/python3.14/site-packages/pyvisa_py/protocols/rpc.py", line 454, in __init__
+    self.connect(1e-3 * open_timeout)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gajen/Documents/Interlagos/Interlagos_local/lib/python3.14/site-packages/pyvisa_py/protocols/rpc.py", line 488, in connect
+    raise RPCError("can't connect to server")
+pyvisa_py.protocols.rpc.RPCError: can't connect to server
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/gajen/Documents/Interlagos/Interlagos_local/lib/python3.14/site-packages/pyvisa_py/highlevel.py", line 196, in open
+    sess = cls(session, resource_name, parsed, open_timeout)
+  File "/home/gajen/Documents/Interlagos/Interlagos_local/lib/python3.14/site-packages/pyvisa_py/tcpip.py", line 86, in __new__
+    return newcls(resource_manager_session, resource_name, parsed, open_timeout)
+  File "/home/gajen/Documents/Interlagos/Interlagos_local/lib/python3.14/site-packages/pyvisa_py/sessions.py", line 329, in __init__
+    self.after_parsing()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "/home/gajen/Documents/Interlagos/Interlagos_local/lib/python3.14/site-packages/pyvisa_py/tcpip.py", line 496, in after_parsing
+    raise OpenError()
+pyvisa_py.sessions.OpenError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/gajen/Documents/Interlagos/S3_wrapper.py", line 214, in <module>
+    VBG_stability()
+    ~~~~~~~~~~~~~^^
+  File "/home/gajen/Documents/Interlagos/S3_wrapper.py", line 100, in VBG_stability
+    VBG_trimbit_trial(trimvalue)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/home/gajen/Documents/Interlagos/S3_wrapper.py", line 77, in VBG_trimbit_trial
+    i2c.trimbits_dump_vbg()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/gajen/Documents/Interlagos/i2c.py", line 279, in trimbits_dump_vbg
+    i2c_reg_write_debug(i, regs[i], t)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/home/gajen/Documents/Interlagos/i2c.py", line 92, in i2c_reg_write_debug
+    run_smu_sequence_debug(length, arr_high, arr_low, t)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gajen/Documents/Interlagos/visa_data_tx_util.py", line 224, in run_smu_sequence_debug
+    afg = rm.open_resource(afg_addr)
+  File "/home/gajen/Documents/Interlagos/Interlagos_local/lib/python3.14/site-packages/pyvisa/highlevel.py", line 3302, in open_resource
+    res.open(access_mode, open_timeout)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gajen/Documents/Interlagos/Interlagos_local/lib/python3.14/site-packages/pyvisa/resources/resource.py", line 290, in open
+    self.session, status = self._resource_manager.open_bare_resource(
+                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self._resource_name, access_mode, open_timeout
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/gajen/Documents/Interlagos/Interlagos_local/lib/python3.14/site-packages/pyvisa/highlevel.py", line 3227, in open_bare_resource
+    return self.visalib.open(self.session, resource_name, access_mode, open_timeout)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gajen/Documents/Interlagos/Interlagos_local/lib/python3.14/site-packages/pyvisa_py/highlevel.py", line 198, in open
+    return VISASession(0), self.handle_return_value(None, e.error_code)
+                           ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/home/gajen/Documents/Interlagos/Interlagos_local/lib/python3.14/site-packages/pyvisa/highlevel.py", line 252, in handle_return_value
+    raise errors.VisaIOError(rv)
+pyvisa.errors.VisaIOError: VI_ERROR_RSRC_NFOUND (-1073807343): Insufficient location information or the requested device or resource is not present in the system.
+(Interlagos_local) gajen@Gajendranath:~/Documents/Interlagos$ ^C
+(Interlagos_local) gajen@Gajendranath:~/Documents/Interlagos$ python S3_wrapper.py
+Test started at 2026-08-16 01:49:04.438211
+
+Supply current in testmode is 186.46uA
+Frequency in testmode is 89.934KHz
+VBG trimbit changed to 0
+Updating Python_sheet...
+Writing into reg 0
+Writing into reg 1
+Writing into reg 7
+Bandgap Voltage in testmode is 0.925541V
+Bandgap Voltage in testmode is 0.925458V
+Bandgap Voltage in testmode is 0.925340V
+Bandgap Voltage in testmode is 0.925234V
+Bandgap Voltage in testmode is 0.925433V
+VBG trimbit changed to 1
+Updating Python_sheet...
+Writing into reg 0
+Writing into reg 1
+Writing into reg 7
+^CTraceback (most recent call last):
+  File "/home/gajen/Documents/Interlagos/S3_wrapper.py", line 214, in <module>
+    VBG_stability()
+    ~~~~~~~~~~~~~^^
+  File "/home/gajen/Documents/Interlagos/S3_wrapper.py", line 98, in VBG_stability
+    VBG_trimbit_trial(trimvalue)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/home/gajen/Documents/Interlagos/S3_wrapper.py", line 77, in VBG_trimbit_trial
+    i2c.trimbits_dump_vbg()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/gajen/Documents/Interlagos/i2c.py", line 279, in trimbits_dump_vbg
+    i2c_reg_write_debug(i, regs[i], t)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/home/gajen/Documents/Interlagos/i2c.py", line 92, in i2c_reg_write_debug
+    run_smu_sequence_debug(length, arr_high, arr_low, t)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gajen/Documents/Interlagos/visa_data_tx_util.py", line 222, in run_smu_sequence_debug
+    rm = pyvisa.ResourceManager()
+  File "/home/gajen/Documents/Interlagos/Interlagos_local/lib/python3.14/site-packages/pyvisa/highlevel.py", line 2993, in __new__
+    visa_library = open_visa_library(visa_library)
+  File "/home/gajen/Documents/Interlagos/Interlagos_local/lib/python3.14/site-packages/pyvisa/highlevel.py", line 2900, in open_visa_library
+    wrapper = _get_default_wrapper()
+  File "/home/gajen/Documents/Interlagos/Interlagos_local/lib/python3.14/site-packages/pyvisa/highlevel.py", line 2846, in _get_default_wrapper
+    ivi_binary_found = bool(IVIVisaLibrary.get_library_paths())
+                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/gajen/Documents/Interlagos/Interlagos_local/lib/python3.14/site-packages/pyvisa/ctwrapper/highlevel.py", line 94, in get_library_paths
+    find_library(library_path)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/home/gajen/Documents/Interlagos/Interlagos_local/lib/python3.14/site-packages/pyvisa/ctwrapper/cthelper.py", line 68, in _find_library
+    path = _findlib_ldconfig(name) or _findlib_gcc(name)
+                                      ~~~~~~~~~~~~^^^^^^
+  File "/home/gajen/Documents/Interlagos/Interlagos_local/lib/python3.14/site-packages/pyvisa/ctwrapper/cthelper.py", line 40, in _findlib_gcc
+    trace = f.read()
+KeyboardInterrupt
+
+(Interlagos_local) gajen@Gajendranath:~/Documents/Interlagos$ python S3_wrapper.py
+Test started at 2026-08-16 01:51:04.770167
+
+Supply current in testmode is 133.76uA
+Frequency in testmode is 0.000KHz
+VBG trimbit changed to 0
+Updating Python_sheet...
+Writing into reg 0
+Writing into reg 1
+Writing into reg 7
+^CTraceback (most recent call last):
+  File "/home/gajen/Documents/Interlagos/S3_wrapper.py", line 214, in <module>
+    VBG_stability()
+    ~~~~~~~~~~~~~^^
+  File "/home/gajen/Documents/Interlagos/S3_wrapper.py", line 96, in VBG_stability
+    VBG_trimbit_trial(trimvalue)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/home/gajen/Documents/Interlagos/S3_wrapper.py", line 77, in VBG_trimbit_trial
+    i2c.trimbits_dump_vbg()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/gajen/Documents/Interlagos/i2c.py", line 281, in trimbits_dump_vbg
+    time.sleep(2)
+    ~~~~~~~~~~^^^
+KeyboardInterrupt
+
+(Interlagos_local) gajen@Gajendranath:~/Documents/Interlagos$ python S3_wrapper.py
+Test started at 2026-08-16 01:52:40.889682
+
+Supply current in testmode is 188.01uA
+Frequency in testmode is 89.903KHz
+VBG trimbit changed to 0
+Updating Python_sheet...
+Writing into reg 0
+Writing into reg 1
+Writing into reg 7
+Bandgap Voltage in testmode is 0.925465V
+Bandgap Voltage in testmode is 0.925544V
+Bandgap Voltage in testmode is 0.925607V
+Bandgap Voltage in testmode is 0.925532V
+Bandgap Voltage in testmode is 0.925583V
+VBG trimbit changed to 1
+Updating Python_sheet...
+Writing into reg 0
+Writing into reg 1
+Writing into reg 7
+Bandgap Voltage in testmode is 0.944937V
+Bandgap Voltage in testmode is 0.945039V
+Bandgap Voltage in testmode is 0.945203V
+Bandgap Voltage in testmode is 0.945211V
+Bandgap Voltage in testmode is 0.945203V
+VBG trimbit changed to 5
+Updating Python_sheet...
+Writing into reg 0
+Writing into reg 1
+Writing into reg 7
+Bandgap Voltage in testmode is 1.018326V
+Bandgap Voltage in testmode is 1.018394V
+Bandgap Voltage in testmode is 1.018391V
+Bandgap Voltage in testmode is 1.018285V
+Bandgap Voltage in testmode is 1.018413V
+VBG trimbit changed to 13
+Updating Python_sheet...
+Writing into reg 0
+Writing into reg 1
+Writing into reg 7
+Bandgap Voltage in testmode is 1.152459V
+Bandgap Voltage in testmode is 1.152422V
+Bandgap Voltage in testmode is 1.152412V
+Bandgap Voltage in testmode is 1.152379V
+Bandgap Voltage in testmode is 1.152290V
+Supply current in amplifier mode is 95.01uA
+Supply current in testmode is 143.27uA
+Frequency in testmode is 1.202KHz
+VBG trimbit changed to 0
+Updating Python_sheet...
+Writing into reg 0
+Writing into reg 1
+Writing into reg 7
+Bandgap Voltage in testmode is 0.761903V
+Bandgap Voltage in testmode is 0.757285V
+Bandgap Voltage in testmode is 0.759522V
+Bandgap Voltage in testmode is 0.755227V
+Bandgap Voltage in testmode is 0.755172V
+VBG trimbit changed to 1
+Updating Python_sheet...
+Writing into reg 0
+Writing into reg 1
+Writing into reg 7
+Bandgap Voltage in testmode is 0.773213V
+Bandgap Voltage in testmode is 0.773287V
+Bandgap Voltage in testmode is 0.774922V
+Bandgap Voltage in testmode is 0.773715V
+Bandgap Voltage in testmode is 0.773412V
+VBG trimbit changed to 5
+Updating Python_sheet...
+Writing into reg 0
+Writing into reg 1
+Writing into reg 7
+Bandgap Voltage in testmode is 0.839938V
+Bandgap Voltage in testmode is 0.838855V
+Bandgap Voltage in testmode is 0.838519V
+Bandgap Voltage in testmode is 0.839815V
+Bandgap Voltage in testmode is 0.838432V
+VBG trimbit changed to 13
+Updating Python_sheet...
+Writing into reg 0
+Writing into reg 1
+Writing into reg 7
+Bandgap Voltage in testmode is 0.969040V
+Bandgap Voltage in testmode is 0.968992V
+Bandgap Voltage in testmode is 0.968830V
+Bandgap Voltage in testmode is 0.968693V
+Bandgap Voltage in testmode is 0.968400V
+Supply current in amplifier mode is 95.01uA
+Supply current in testmode is 143.26uA
+Frequency in testmode is 1.202KHz
+VBG trimbit changed to 0
+Updating Python_sheet...
+Writing into reg 0
+Writing into reg 1
+Writing into reg 7
+Bandgap Voltage in testmode is 0.754954V
+Bandgap Voltage in testmode is 0.758384V
+Bandgap Voltage in testmode is 0.760002V
+Bandgap Voltage in testmode is 0.753386V
+Bandgap Voltage in testmode is 0.753351V
+VBG trimbit changed to 1
+Updating Python_sheet...
+Writing into reg 0
+Writing into reg 1
+Writing into reg 7
+Bandgap Voltage in testmode is 0.773703V
+Bandgap Voltage in testmode is 0.774456V
+Bandgap Voltage in testmode is 0.773118V
+Bandgap Voltage in testmode is 0.774290V
+Bandgap Voltage in testmode is 0.774114V
+VBG trimbit changed to 5
+Updating Python_sheet...
+Writing into reg 0
+Writing into reg 1
+Writing into reg 7
+Bandgap Voltage in testmode is 0.395224V
+Bandgap Voltage in testmode is 0.395178V
+Bandgap Voltage in testmode is 0.395229V
+Bandgap Voltage in testmode is 0.395200V
+Bandgap Voltage in testmode is 0.395308V
+VBG trimbit changed to 13
+Updating Python_sheet...
+Writing into reg 0
+Writing into reg 1
+Writing into reg 7
+Bandgap Voltage in testmode is 0.493836V
+Bandgap Voltage in testmode is 0.493840V
+Bandgap Voltage in testmode is 0.493968V
+Bandgap Voltage in testmode is 0.493780V
+Bandgap Voltage in testmode is 0.493882V
+Supply current in amplifier mode is 229.83uA
+Supply current in testmode is 229.83uA
+Frequency in testmode is 76.664KHz
+VBG trimbit changed to 0
+Updating Python_sheet...
+Writing into reg 0
+Writing into reg 1
+Writing into reg 7
+Bandgap Voltage in testmode is 0.493823V
+Bandgap Voltage in testmode is 0.493964V
+Bandgap Voltage in testmode is 0.493764V
+Bandgap Voltage in testmode is 0.493842V
+Bandgap Voltage in testmode is 0.493753V
+VBG trimbit changed to 1
+Updating Python_sheet...
+Writing into reg 0
+Writing into reg 1
+Writing into reg 7
+Bandgap Voltage in testmode is 0.493978V
+Bandgap Voltage in testmode is 0.494034V
+Bandgap Voltage in testmode is 0.493689V
+Bandgap Voltage in testmode is 0.493668V
+Bandgap Voltage in testmode is 0.493698V
+VBG trimbit changed to 5
+Updating Python_sheet...
+Writing into reg 0
+Writing into reg 1
+Writing into reg 7
+^CTraceback (most recent call last):
+  File "/home/gajen/Documents/Interlagos/S3_wrapper.py", line 214, in <module>
+    i = 10
+        ^^
+  File "/home/gajen/Documents/Interlagos/S3_wrapper.py", line 100, in VBG_stability
+    VBG_trimbit_trial(trimvalue)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/home/gajen/Documents/Interlagos/S3_wrapper.py", line 77, in VBG_trimbit_trial
+    i2c.trimbits_dump_vbg()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/gajen/Documents/Interlagos/i2c.py", line 281, in trimbits_dump_vbg
+    time.sleep(2)
+    ~~~~~~~~~~^^^
+KeyboardInterrupt
+
+(Interlagos_local) gajen@Gajendranath:~/Documents/Interlagos$ python S3_wrapper.py
+Test started at 2026-08-16 01:58:34.660088
+
+Supply current in testmode is 186.64uA
+Frequency in testmode is 89.894KHz
+VBG trimbit changed to 0
+Updating Python_sheet...
+Bandgap Voltage in testmode is 0.925416V
+Bandgap Voltage in testmode is 0.925484V
+Bandgap Voltage in testmode is 0.925404V
+Bandgap Voltage in testmode is 0.925462V
+Bandgap Voltage in testmode is 0.925306V
+VBG trimbit changed to 1
+Updating Python_sheet...
+Bandgap Voltage in testmode is 0.944843V
+Bandgap Voltage in testmode is 0.944858V
+Bandgap Voltage in testmode is 0.944821V
+Bandgap Voltage in testmode is 0.944871V
+Bandgap Voltage in testmode is 0.945108V
+VBG trimbit changed to 5
+Updating Python_sheet...
+Bandgap Voltage in testmode is 1.018154V
+Bandgap Voltage in testmode is 1.017834V
+Bandgap Voltage in testmode is 1.017999V
+Bandgap Voltage in testmode is 1.018023V
+Bandgap Voltage in testmode is 1.017938V
+VBG trimbit changed to 13
+Updating Python_sheet...
+Bandgap Voltage in testmode is 1.151596V
+Bandgap Voltage in testmode is 1.151641V
+Bandgap Voltage in testmode is 1.151656V
+Bandgap Voltage in testmode is 1.151734V
+Bandgap Voltage in testmode is 1.151866V
+Supply current in amplifier mode is 95.86uA
+Supply current in testmode is 230.07uA
+Frequency in testmode is 76.672KHz
+VBG trimbit changed to 0
+Updating Python_sheet...
+Bandgap Voltage in testmode is 0.496027V
+Bandgap Voltage in testmode is 0.496112V
+Bandgap Voltage in testmode is 0.496193V
+Bandgap Voltage in testmode is 0.496097V
+Bandgap Voltage in testmode is 0.496083V
+VBG trimbit changed to 1
+Updating Python_sheet...
+Bandgap Voltage in testmode is 0.496414V
+Bandgap Voltage in testmode is 0.496273V
+Bandgap Voltage in testmode is 0.496345V
+Bandgap Voltage in testmode is 0.496380V
+Bandgap Voltage in testmode is 0.496344V
+VBG trimbit changed to 5
+Updating Python_sheet...
+Bandgap Voltage in testmode is 0.496152V
+Bandgap Voltage in testmode is 0.496179V
+Bandgap Voltage in testmode is 0.496214V
+Bandgap Voltage in testmode is 0.496127V
+Bandgap Voltage in testmode is 0.496125V
+VBG trimbit changed to 13
+Updating Python_sheet...
+Bandgap Voltage in testmode is 0.496261V
+Bandgap Voltage in testmode is 0.496181V
+Bandgap Voltage in testmode is 0.496316V
+Bandgap Voltage in testmode is 0.496270V
+Bandgap Voltage in testmode is 0.496302V
+Supply current in amplifier mode is 230.10uA
+Supply current in testmode is 230.13uA
+Frequency in testmode is 76.633KHz
+^CTraceback (most recent call last):
+  File "/home/gajen/Documents/Interlagos/S3_wrapper.py", line 216, in <module>
+    VBG_stability()
+    ~~~~~~~~~~~~~^^
+  File "/home/gajen/Documents/Interlagos/S3_wrapper.py", line 98, in VBG_stability
+    VBG_trimbit_trial(trimvalue)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/home/gajen/Documents/Interlagos/S3_wrapper.py", line 72, in VBG_trimbit_trial
+    gsheet_util.write_value('B2', trimvalue)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/gajen/Documents/Interlagos/gsheet_util.py", line 82, in write_value
+    worksheet = client.open_by_key(SHEET_ID).worksheet(google_sheetname1)
+  File "/home/gajen/Documents/Interlagos/Interlagos_local/lib/python3.14/site-packages/gspread/spreadsheet.py", line 325, in worksheet
+    sheet_data = self.fetch_sheet_metadata()
+  File "/home/gajen/Documents/Interlagos/Interlagos_local/lib/python3.14/site-packages/gspread/spreadsheet.py", line 230, in fetch_sheet_metadata
+    return self.client.fetch_sheet_metadata(self.id, params=params)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gajen/Documents/Interlagos/Interlagos_local/lib/python3.14/site-packages/gspread/http_client.py", line 305, in fetch_sheet_metadata
+    r = self.request("get", url, params=params)
+  File "/home/gajen/Documents/Interlagos/Interlagos_local/lib/python3.14/site-packages/gspread/http_client.py", line 114, in request
+    response = self.session.request(
+        method=method,
+    ...<6 lines>...
+        timeout=self.timeout,
+    )
+  File "/home/gajen/Documents/Interlagos/Interlagos_local/lib/python3.14/site-packages/google/auth/transport/requests.py", line 629, in request
+    response = super(AuthorizedSession, self).request(
+        method,
+    ...<4 lines>...
+        **kwargs
+    )
+  File "/home/gajen/Documents/Interlagos/Interlagos_local/lib/python3.14/site-packages/requests/sessions.py", line 651, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/gajen/Documents/Interlagos/Interlagos_local/lib/python3.14/site-packages/requests/sessions.py", line 784, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/gajen/Documents/Interlagos/Interlagos_local/lib/python3.14/site-packages/requests/adapters.py", line 696, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "/home/gajen/Documents/Interlagos/Interlagos_local/lib/python3.14/site-packages/urllib3/connectionpool.py", line 788, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "/home/gajen/Documents/Interlagos/Interlagos_local/lib/python3.14/site-packages/urllib3/connectionpool.py", line 534, in _make_request
+    response = conn.getresponse()
+  File "/home/gajen/Documents/Interlagos/Interlagos_local/lib/python3.14/site-packages/urllib3/connection.py", line 571, in getresponse
+    httplib_response = super().getresponse()
+  File "/usr/lib/python3.14/http/client.py", line 1459, in getresponse
+    response.begin()
+    ~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/http/client.py", line 336, in begin
+    version, status, reason = self._read_status()
+                              ~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/http/client.py", line 297, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+               ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/socket.py", line 725, in readinto
+    return self._sock.recv_into(b)
+           ~~~~~~~~~~~~~~~~~~~~^^^
+  File "/usr/lib/python3.14/ssl.py", line 1304, in recv_into
+    return self.read(nbytes, buffer)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/ssl.py", line 1138, in read
+    return self._sslobj.read(len, buffer)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+KeyboardInterrupt
+
+(Interlagos_local) gajen@Gajendranath:~/Documents/Interlagos$ python S3_wrapper.py
+Test started at 2026-08-16 02:03:05.191841
+
+Supply current in testmode is 188.02uA
+Frequency in testmode is 89.935KHz
+VBG trimbit changed to 0
+Updating Python_sheet...
+Bandgap Voltage in testmode is 0.925717V
+Bandgap Voltage in testmode is 0.925869V
+Bandgap Voltage in testmode is 0.925658V
+Bandgap Voltage in testmode is 0.925689V
+Bandgap Voltage in testmode is 0.925594V
+VBG trimbit changed to 4
+Updating Python_sheet...
+Bandgap Voltage in testmode is 1.128769V
+Bandgap Voltage in testmode is 1.128812V
+Bandgap Voltage in testmode is 1.128767V
+Bandgap Voltage in testmode is 1.128789V
+Bandgap Voltage in testmode is 1.129060V
+VBG trimbit changed to 12
+Updating Python_sheet...
+Bandgap Voltage in testmode is 1.000842V
+Bandgap Voltage in testmode is 1.000717V
+Bandgap Voltage in testmode is 1.000610V
+Bandgap Voltage in testmode is 1.000451V
+Bandgap Voltage in testmode is 1.000625V
+Supply current in amplifier mode is 136.72uA
+Supply current in testmode is 136.73uA
+Frequency in testmode is 0.000KHz
+VBG trimbit changed to 0
+Updating Python_sheet...
+Bandgap Voltage in testmode is 0.925411V
+Bandgap Voltage in testmode is 0.925450V
+Bandgap Voltage in testmode is 0.925469V
+Bandgap Voltage in testmode is 0.925443V
+Bandgap Voltage in testmode is 0.925453V
+VBG trimbit changed to 4
+Updating Python_sheet...
+Bandgap Voltage in testmode is 1.000471V
+Bandgap Voltage in testmode is 1.000545V
+Bandgap Voltage in testmode is 1.000524V
+Bandgap Voltage in testmode is 1.000642V
+Bandgap Voltage in testmode is 1.000428V
+VBG trimbit changed to 12
+Updating Python_sheet...
+Bandgap Voltage in testmode is 1.135790V
+Bandgap Voltage in testmode is 1.135819V
+Bandgap Voltage in testmode is 1.135791V
+Bandgap Voltage in testmode is 1.135683V
+Bandgap Voltage in testmode is 1.135675V
+Supply current in amplifier mode is 94.72uA
+Supply current in testmode is 149.90uA
+Frequency in testmode is 4.860KHz
+VBG trimbit changed to 0
+Updating Python_sheet...
+Bandgap Voltage in testmode is 0.925740V
+Bandgap Voltage in testmode is 0.925762V
+Bandgap Voltage in testmode is 0.925655V
+Bandgap Voltage in testmode is 0.925763V
+Bandgap Voltage in testmode is 0.925739V
+VBG trimbit changed to 4
+Updating Python_sheet...
+Bandgap Voltage in testmode is 1.000943V
+Bandgap Voltage in testmode is 1.000712V
+Bandgap Voltage in testmode is 1.000798V
+Bandgap Voltage in testmode is 1.000639V
+Bandgap Voltage in testmode is 1.000604V
+VBG trimbit changed to 12
+Updating Python_sheet...
+Bandgap Voltage in testmode is 1.135810V
+Bandgap Voltage in testmode is 1.135811V
+Bandgap Voltage in testmode is 1.135896V
+Bandgap Voltage in testmode is 1.135917V
+Bandgap Voltage in testmode is 1.135941V
+Supply current in amplifier mode is 94.60uA
+Supply current in testmode is 149.83uA
+Frequency in testmode is 4.860KHz
+VBG trimbit changed to 0
+Updating Python_sheet...
+Bandgap Voltage in testmode is 0.729248V
+Bandgap Voltage in testmode is 0.729617V
+Bandgap Voltage in testmode is 0.729989V
+Bandgap Voltage in testmode is 0.729657V
+Bandgap Voltage in testmode is 0.729898V
+VBG trimbit changed to 4
+Updating Python_sheet...
+Bandgap Voltage in testmode is 0.795842V
+Bandgap Voltage in testmode is 0.795950V
+Bandgap Voltage in testmode is 0.796066V
+Bandgap Voltage in testmode is 0.795973V
+Bandgap Voltage in testmode is 0.795886V
+VBG trimbit changed to 12
+Updating Python_sheet...
+Bandgap Voltage in testmode is 1.135970V
+Bandgap Voltage in testmode is 1.136012V
+Bandgap Voltage in testmode is 1.135958V
+Bandgap Voltage in testmode is 1.136020V
+Bandgap Voltage in testmode is 1.135992V
+Supply current in amplifier mode is 94.57uA
+Supply current in testmode is 149.76uA
+Frequency in testmode is 4.861KHz
+VBG trimbit changed to 0
+Updating Python_sheet...
+Bandgap Voltage in testmode is 0.925521V
+Bandgap Voltage in testmode is 0.925526V
+Bandgap Voltage in testmode is 0.925518V
+Bandgap Voltage in testmode is 0.925488V
+Bandgap Voltage in testmode is 0.925585V
+VBG trimbit changed to 4
+Updating Python_sheet...
+Bandgap Voltage in testmode is 1.000987V
+Bandgap Voltage in testmode is 1.000879V
+Bandgap Voltage in testmode is 1.000707V
+Bandgap Voltage in testmode is 1.000736V
+Bandgap Voltage in testmode is 1.000689V
+VBG trimbit changed to 12
+Updating Python_sheet...
+Bandgap Voltage in testmode is 1.135965V
+Bandgap Voltage in testmode is 1.135803V
+Bandgap Voltage in testmode is 1.135813V
+Bandgap Voltage in testmode is 1.135937V
+Bandgap Voltage in testmode is 1.135735V
+Supply current in amplifier mode is 94.56uA
+Supply current in testmode is 149.75uA
+Frequency in testmode is 4.859KHz
+VBG trimbit changed to 0
+Updating Python_sheet...
+Bandgap Voltage in testmode is 0.925587V
+Bandgap Voltage in testmode is 0.925751V
+Bandgap Voltage in testmode is 0.925574V
+Bandgap Voltage in testmode is 0.925576V
+Bandgap Voltage in testmode is 0.925637V
+VBG trimbit changed to 4
+Updating Python_sheet...
+Bandgap Voltage in testmode is 1.000641V
+Bandgap Voltage in testmode is 1.000570V
+Bandgap Voltage in testmode is 1.000377V
+Bandgap Voltage in testmode is 1.000527V
+Bandgap Voltage in testmode is 1.000680V
+VBG trimbit changed to 12
+Updating Python_sheet...
+Bandgap Voltage in testmode is 1.135661V
+Bandgap Voltage in testmode is 1.135839V
+Bandgap Voltage in testmode is 1.135940V
+Bandgap Voltage in testmode is 1.136129V
+Bandgap Voltage in testmode is 1.135900V
+Supply current in amplifier mode is 143.87uA
+Supply current in testmode is 143.85uA
+Frequency in testmode is 0.000KHz
+VBG trimbit changed to 0
+Updating Python_sheet...
+Bandgap Voltage in testmode is 0.925614V
+Bandgap Voltage in testmode is 0.925580V
+Bandgap Voltage in testmode is 0.925325V
+Bandgap Voltage in testmode is 0.925439V
+Bandgap Voltage in testmode is 0.925449V
+VBG trimbit changed to 4
+Updating Python_sheet...
+Bandgap Voltage in testmode is 1.000816V
+Bandgap Voltage in testmode is 1.000816V
+Bandgap Voltage in testmode is 1.000609V
+Bandgap Voltage in testmode is 1.000543V
+Bandgap Voltage in testmode is 1.000594V
+VBG trimbit changed to 12
+Updating Python_sheet...
+Bandgap Voltage in testmode is 1.136059V
+Bandgap Voltage in testmode is 1.136116V
+Traceback (most recent call last):
+  File "/home/gajen/Documents/Interlagos/Interlagos_local/lib/python3.14/site-packages/pyvisa_py/tcpip.py", line 491, in after_parsing
+    self.interface = Vxi11CoreClient(host_address, port, self.open_timeout)
+                     ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gajen/Documents/Interlagos/Interlagos_local/lib/python3.14/site-packages/pyvisa_py/tcpip.py", line 395, in __init__
+    rpc.TCPClient.__init__(self, host, prog, vers, open_timeout)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gajen/Documents/Interlagos/Interlagos_local/lib/python3.14/site-packages/pyvisa_py/protocols/rpc.py", line 828, in __init__
+    RawTCPClient.__init__(self, host, prog, vers, port, open_timeout)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gajen/Documents/Interlagos/Interlagos_local/lib/python3.14/site-packages/pyvisa_py/protocols/rpc.py", line 454, in __init__
+    self.connect(1e-3 * open_timeout)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gajen/Documents/Interlagos/Interlagos_local/lib/python3.14/site-packages/pyvisa_py/protocols/rpc.py", line 488, in connect
+    raise RPCError("can't connect to server")
+pyvisa_py.protocols.rpc.RPCError: can't connect to server
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/gajen/Documents/Interlagos/Interlagos_local/lib/python3.14/site-packages/pyvisa_py/highlevel.py", line 196, in open
+    sess = cls(session, resource_name, parsed, open_timeout)
+  File "/home/gajen/Documents/Interlagos/Interlagos_local/lib/python3.14/site-packages/pyvisa_py/tcpip.py", line 86, in __new__
+    return newcls(resource_manager_session, resource_name, parsed, open_timeout)
+  File "/home/gajen/Documents/Interlagos/Interlagos_local/lib/python3.14/site-packages/pyvisa_py/sessions.py", line 329, in __init__
+    self.after_parsing()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "/home/gajen/Documents/Interlagos/Interlagos_local/lib/python3.14/site-packages/pyvisa_py/tcpip.py", line 496, in after_parsing
+    raise OpenError()
+pyvisa_py.sessions.OpenError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/gajen/Documents/Interlagos/S3_wrapper.py", line 216, in <module>
+    VBG_stability()
+    ~~~~~~~~~~~~~^^
+  File "/home/gajen/Documents/Interlagos/S3_wrapper.py", line 104, in VBG_stability
+    VBG_trimbit_trial(trimvalue)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/home/gajen/Documents/Interlagos/S3_wrapper.py", line 83, in VBG_trimbit_trial
+    instr_control.dmm_measure_vbg()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/gajen/Documents/Interlagos/instr_control.py", line 105, in dmm_measure_vbg
+    dmm2 = rm.open_resource(dmm2_addr)
+  File "/home/gajen/Documents/Interlagos/Interlagos_local/lib/python3.14/site-packages/pyvisa/highlevel.py", line 3302, in open_resource
+    res.open(access_mode, open_timeout)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gajen/Documents/Interlagos/Interlagos_local/lib/python3.14/site-packages/pyvisa/resources/resource.py", line 290, in open
+    self.session, status = self._resource_manager.open_bare_resource(
+                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self._resource_name, access_mode, open_timeout
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/gajen/Documents/Interlagos/Interlagos_local/lib/python3.14/site-packages/pyvisa/highlevel.py", line 3227, in open_bare_resource
+    return self.visalib.open(self.session, resource_name, access_mode, open_timeout)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gajen/Documents/Interlagos/Interlagos_local/lib/python3.14/site-packages/pyvisa_py/highlevel.py", line 198, in open
+    return VISASession(0), self.handle_return_value(None, e.error_code)
+                           ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/home/gajen/Documents/Interlagos/Interlagos_local/lib/python3.14/site-packages/pyvisa/highlevel.py", line 252, in handle_return_value
+    raise errors.VisaIOError(rv)
+pyvisa.errors.VisaIOError: VI_ERROR_RSRC_NFOUND (-1073807343): Insufficient location information or the requested device or resource is not present in the system.

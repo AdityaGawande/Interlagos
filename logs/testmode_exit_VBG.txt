@@ -1,0 +1,161 @@
+Test started at 2026-08-16 05:44:47.023875
+
+VBG trimbit changed to 0
+Updating Python_sheet...
+Bandgap Voltage in testmode is 0.925941V
+Bandgap Voltage in testmode is 0.925971V
+Supply current in testmode is 118.80uA
+Supply current in amplifier mode is 75.92uA
+
+Test started at 2026-08-16 05:46:36.369812
+
+VBG trimbit changed to 1
+Updating Python_sheet...
+Bandgap Voltage in testmode is 0.945364V
+Bandgap Voltage in testmode is 0.945437V
+Supply current in testmode is 119.56uA
+Supply current in amplifier mode is 76.14uA
+VBG trimbit changed to 2
+Updating Python_sheet...
+Bandgap Voltage in testmode is 0.964324V
+Bandgap Voltage in testmode is 0.964351V
+Supply current in testmode is 120.42uA
+Supply current in amplifier mode is 76.47uA
+VBG trimbit changed to 3
+Updating Python_sheet...
+Bandgap Voltage in testmode is 0.982589V
+Bandgap Voltage in testmode is 0.982620V
+Supply current in testmode is 121.41uA
+Supply current in amplifier mode is 76.93uA
+VBG trimbit changed to 4
+Updating Python_sheet...
+Bandgap Voltage in testmode is 1.000462V
+Bandgap Voltage in testmode is 1.000550V
+Supply current in testmode is 122.26uA
+Supply current in amplifier mode is 77.24uA
+VBG trimbit changed to 5
+Updating Python_sheet...
+Bandgap Voltage in testmode is 1.018228V
+Bandgap Voltage in testmode is 1.018272V
+Supply current in testmode is 123.11uA
+Supply current in amplifier mode is 77.59uA
+VBG trimbit changed to 6
+Updating Python_sheet...
+Bandgap Voltage in testmode is 1.035789V
+Bandgap Voltage in testmode is 1.035624V
+Supply current in testmode is 123.95uA
+Supply current in amplifier mode is 77.90uA
+VBG trimbit changed to 7
+Updating Python_sheet...
+Bandgap Voltage in testmode is 1.052517V
+Bandgap Voltage in testmode is 1.052557V
+Supply current in testmode is 124.76uA
+Supply current in amplifier mode is 78.23uA
+VBG trimbit changed to 8
+Updating Python_sheet...
+Bandgap Voltage in testmode is 1.069829V
+Bandgap Voltage in testmode is 1.069844V
+Supply current in testmode is 125.64uA
+Supply current in amplifier mode is 78.53uA
+VBG trimbit changed to 9
+Updating Python_sheet...
+Bandgap Voltage in testmode is 1.086691V
+Bandgap Voltage in testmode is 1.086780V
+Supply current in testmode is 126.49uA
+Supply current in amplifier mode is 78.81uA
+VBG trimbit changed to 10
+Updating Python_sheet...
+Bandgap Voltage in testmode is 1.103159V
+Bandgap Voltage in testmode is 1.103033V
+Supply current in testmode is 127.28uA
+Supply current in amplifier mode is 79.13uA
+VBG trimbit changed to 11
+Updating Python_sheet...
+Bandgap Voltage in testmode is 1.119741V
+Bandgap Voltage in testmode is 1.119698V
+Supply current in testmode is 128.13uA
+Supply current in amplifier mode is 79.41uA
+VBG trimbit changed to 12
+Updating Python_sheet...
+Bandgap Voltage in testmode is 1.135963V
+Bandgap Voltage in testmode is 1.135801V
+Supply current in testmode is 128.92uA
+Supply current in amplifier mode is 79.69uA
+VBG trimbit changed to 13
+Updating Python_sheet...
+Bandgap Voltage in testmode is 1.152364V
+Bandgap Voltage in testmode is 1.152374V
+Supply current in testmode is 129.75uA
+Supply current in amplifier mode is 79.98uA
+VBG trimbit changed to 14
+Updating Python_sheet...
+Bandgap Voltage in testmode is 1.168516V
+Bandgap Voltage in testmode is 1.168508V
+Supply current in testmode is 130.56uA
+Supply current in amplifier mode is 80.26uA
+VBG trimbit changed to 15
+Updating Python_sheet...
+Bandgap Voltage in testmode is 1.184446V
+Bandgap Voltage in testmode is 1.184408V
+Supply current in testmode is 131.35uA
+Supply current in amplifier mode is 80.52uA
+VBG trimbit changed to 16
+Updating Python_sheet...
+Bandgap Voltage in testmode is 0.538096V
+Bandgap Voltage in testmode is 0.538206V
+Supply current in testmode is 232.82uA
+Supply current in amplifier mode is 232.78uA
+VBG trimbit changed to 17
+Updating Python_sheet...
+Bandgap Voltage in testmode is 0.551942V
+Bandgap Voltage in testmode is 0.551981V
+Supply current in testmode is 235.92uA
+Supply current in amplifier mode is 235.82uA
+VBG trimbit changed to 18
+Updating Python_sheet...
+Bandgap Voltage in testmode is 0.540745V
+Bandgap Voltage in testmode is 0.540855V
+Supply current in testmode is 233.03uA
+Supply current in amplifier mode is 233.00uA
+VBG trimbit changed to 19
+Updating Python_sheet...
+Bandgap Voltage in testmode is 0.554846V
+Bandgap Voltage in testmode is 0.554865V
+Supply current in testmode is 236.05uA
+Supply current in amplifier mode is 236.09uA
+
+# Code changed such that transition from 0 to 16 is avoided
+
+Test started at 2026-08-16 06:07:33.229594
+
+VBG trimbit changed to 15
+Updating Python_sheet...
+VBG trimbit changed to 16
+Updating Python_sheet...
+Bandgap Voltage in testmode is 1.200547V
+Bandgap Voltage in testmode is 1.200521V
+Supply current in testmode is 132.07uA
+Supply current in amplifier mode is 80.73uA
+VBG trimbit changed to 15
+Updating Python_sheet...
+VBG trimbit changed to 17
+Updating Python_sheet...
+Bandgap Voltage in testmode is 1.205397V
+Bandgap Voltage in testmode is 1.205540V
+Supply current in testmode is 148.97uA
+Supply current in amplifier mode is 149.00uA
+
+# Code changed such that transition from 0 to 17 is even smoother
+
+Test started at 2026-08-16 06:14:34.593849
+
+VBG trimbit changed to 15
+Updating Python_sheet...
+VBG trimbit changed to 16
+Updating Python_sheet...
+VBG trimbit changed to 17
+Updating Python_sheet...
+Bandgap Voltage in testmode is 1.216295V
+Bandgap Voltage in testmode is 1.216423V
+Supply current in testmode is 132.86uA
+Supply current in amplifier mode is 132.86uA

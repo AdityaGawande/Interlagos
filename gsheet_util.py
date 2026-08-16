@@ -2,7 +2,7 @@ import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import csv
 import os
-from constants import SHEET_ID, google_sheetname1, csv_filename
+from constants import SHEET_ID, google_sheetname1, csv_filename, auth_json
 
 # Google Sheets API setup
 def authenticate_google_sheets(credentials_file):
@@ -69,3 +69,21 @@ def csv_file_update():
 #     }
 
 #     update_local_files(SHEET_ID, FILE_MAP)
+
+
+from gspread import Cell
+from gspread.utils import a1_to_rowcol
+
+def write_value(cell_addr, value):
+    """
+    Write a single value to a specific cell in a Google Sheet.
+    """
+    client = authenticate_google_sheets(auth_json)
+    worksheet = client.open_by_key(SHEET_ID).worksheet(google_sheetname1)
+
+    row, col = a1_to_rowcol(cell_addr)
+    cell = Cell(row, col, value)
+
+    worksheet.update_cells([cell], value_input_option='RAW')
+
+    # print(f"Updated cell {cell_addr} with value: {value}")

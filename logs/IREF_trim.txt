@@ -1,0 +1,136 @@
+Test started at 2026-08-16 04:18:16.384559
+
+IREF trimbit changed to 0
+Updating Python_sheet...
+Supply current in testmode is 1560nA
+Supply current in testmode is 1559nA
+IREF trimbit changed to 1
+Updating Python_sheet...
+Supply current in testmode is 1536nA
+Supply current in testmode is 1536nA
+
+Test started at 2026-08-16 04:20:18.010435
+
+IREF trimbit changed to 2
+Updating Python_sheet...
+Supply current in testmode is 1516nA
+Supply current in testmode is 1517nA
+IREF trimbit changed to 3
+Updating Python_sheet...
+Supply current in testmode is 1493nA
+Supply current in testmode is 1495nA
+IREF trimbit changed to 4
+Updating Python_sheet...
+Supply current in testmode is 1477nA
+Supply current in testmode is 1479nA
+IREF trimbit changed to 5
+Updating Python_sheet...
+Supply current in testmode is 1456nA
+Supply current in testmode is 1456nA
+IREF trimbit changed to 6
+Updating Python_sheet...
+Supply current in testmode is 1433nA
+Supply current in testmode is 1434nA
+IREF trimbit changed to 7
+Updating Python_sheet...
+Supply current in testmode is 1411nA
+Supply current in testmode is 1412nA
+IREF trimbit changed to 8
+Updating Python_sheet...
+Supply current in testmode is 1404nA
+Supply current in testmode is 1404nA
+IREF trimbit changed to 9
+Updating Python_sheet...
+Supply current in testmode is 1381nA
+Supply current in testmode is 1381nA
+IREF trimbit changed to 10
+Updating Python_sheet...
+Supply current in testmode is 1360nA
+Supply current in testmode is 1359nA
+IREF trimbit changed to 11
+Updating Python_sheet...
+Supply current in testmode is 1337nA
+Supply current in testmode is 1336nA
+IREF trimbit changed to 12
+Updating Python_sheet...
+Supply current in testmode is 1321nA
+Supply current in testmode is 1319nA
+IREF trimbit changed to 13
+Updating Python_sheet...
+Supply current in testmode is 1299nA
+Supply current in testmode is 1297nA
+IREF trimbit changed to 14
+Updating Python_sheet...
+Supply current in testmode is 1275nA
+Supply current in testmode is 1277nA
+IREF trimbit changed to 15
+Updating Python_sheet...
+Supply current in testmode is 1256nA
+Supply current in testmode is 1253nA
+IREF trimbit changed to 16
+Updating Python_sheet...
+Supply current in testmode is 1235nA
+Supply current in testmode is 1237nA
+IREF trimbit changed to 17
+Updating Python_sheet...
+Supply current in testmode is 1213nA
+Supply current in testmode is 1215nA
+IREF trimbit changed to 18
+Updating Python_sheet...
+Supply current in testmode is 1190nA
+Supply current in testmode is 1193nA
+
+Test started at 2026-08-16 04:28:42.898573
+
+IREF trimbit changed to 19
+Updating Python_sheet...
+Supply current in testmode is 1169nA
+Supply current in testmode is 1169nA
+IREF trimbit changed to 20
+Updating Python_sheet...
+Supply current in testmode is 1152nA
+Supply current in testmode is 1153nA
+IREF trimbit changed to 21
+Updating Python_sheet...
+Supply current in testmode is 1130nA
+Supply current in testmode is 1130nA
+IREF trimbit changed to 22
+Updating Python_sheet...
+Supply current in testmode is 1108nA
+Supply current in testmode is 1109nA
+IREF trimbit changed to 23
+Updating Python_sheet...
+Supply current in testmode is 1087nA
+Supply current in testmode is 1087nA
+IREF trimbit changed to 24
+Updating Python_sheet...
+Supply current in testmode is 1079nA
+Supply current in testmode is 1080nA
+IREF trimbit changed to 25
+Updating Python_sheet...
+Supply current in testmode is 1058nA
+Supply current in testmode is 1057nA
+IREF trimbit changed to 26
+Updating Python_sheet...
+Supply current in testmode is 1036nA
+Supply current in testmode is 1036nA
+IREF trimbit changed to 27
+Updating Python_sheet...
+Supply current in testmode is 1013nA
+Supply current in testmode is 1014nA
+IREF trimbit changed to 28
+Updating Python_sheet...
+Supply current in testmode is 997nA
+Supply current in testmode is 997nA
+IREF trimbit changed to 29
+Updating Python_sheet...
+Supply current in testmode is 975nA
+Supply current in testmode is 975nA
+IREF trimbit changed to 30
+Updating Python_sheet...
+Supply current in testmode is 953nA
+Supply current in testmode is 954nA
+IREF trimbit changed to 31
+Updating Python_sheet...
+Supply current in testmode is 930nA
+Supply current in testmode is 931nA

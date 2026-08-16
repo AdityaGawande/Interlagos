@@ -70,8 +70,8 @@ def i2c_reg_write_debug(reg_addr_dec, data, t=0.01):
     else:
         reg_addr = [int(b) for b in format(reg_addr_dec, '08b')]
 
-    print(reg_addr)
-    print(data)
+    # print(reg_addr)
+    # print(data)
 
     offset_p = 3
     offset_n = 3
@@ -200,6 +200,24 @@ def testmode_exit(t=0.01):
 
     # time.sleep(testmode_exit_delay)
 
+def testmode_VBG(t=0.01):
+    reg_addr = 8   #f2
+    data = [0,0,0,0,1,0,0,0]    #08
+    # Call the provided SMU sequence function
+    i2c_reg_write_debug(reg_addr, data, t)
+
+def testmode_IREF(t=0.01):
+    reg_addr = 8   #f2
+    data = [0,0,0,0,1,1,1,0]    #0E
+    # Call the provided SMU sequence function
+    i2c_reg_write_debug(reg_addr, data, t)
+
+def testmode_CLK(t=0.01):
+    reg_addr = 8   #f2
+    data = [0,0,0,0,0,0,0,0]    #08
+    # Call the provided SMU sequence function
+    i2c_reg_write_debug(reg_addr, data, t)
+
 def trimbits_dump():
     regs = csv_utils.csv_reg_value_extraction(1, 0, 8)
 
@@ -210,7 +228,7 @@ def trimbits_dump():
     time.sleep(2)
 
 def trimbits_dump_debug():
-    regs = csv_utils.csv_reg_value_extraction(1, 0, 8)
+    regs = csv_utils.csv_reg_value_extraction(1, 0, 10)
 
     for i in range(0,8):
         print(f"Writing into reg {i}")
@@ -219,7 +237,7 @@ def trimbits_dump_debug():
     # time.sleep(2)    
 
 def trimbits_dump_osc_core():
-    regs = csv_utils.csv_reg_value_extraction(1, 0, 8)
+    regs = csv_utils.csv_reg_value_extraction(1, 0, 10)
 
     for i in range(6,8):
         print(f"Writing into reg {i}")
@@ -239,7 +257,7 @@ def trimbits_dump_full():
 def trimbits_dump_res():
     # testmode_entry()
 
-    regs = csv_utils.csv_reg_value_extraction(1, 2, 7)
+    regs = csv_utils.csv_reg_value_extraction(1, 0, 10)
 
     for i in range(2,7):
         print(f"Writing into reg {i}")
@@ -248,6 +266,53 @@ def trimbits_dump_res():
     time.sleep(2)
 
     testmode_exit()
+
+def trimbits_dump_vbg():
+    regs = csv_utils.csv_reg_value_extraction(0, 0, 10)
+
+    for i in range(0,2):
+        # print(f"Writing into reg {i}")
+        i2c_reg_write_debug(i, regs[i], t)
+
+    i = 7
+    # print(f"Writing into reg {i}")
+    i2c_reg_write_debug(i, regs[i], t)
+
+    # time.sleep(2)
+
+def trimbits_dump_iref():
+    regs = csv_utils.csv_reg_value_extraction(0, 0, 10)
+
+    for i in range(0,2):
+        # print(f"Writing into reg {i}")
+        i2c_reg_write_debug(i, regs[i], t)
+
+    i = 7
+    # print(f"Writing into reg {i}")
+    i2c_reg_write_debug(i, regs[i], t)
+
+    # time.sleep(2)
+
+def trimbits_dump_clk():
+    regs = csv_utils.csv_reg_value_extraction(0, 0, 10)
+
+    # for i in range(0,2):
+    #     # print(f"Writing into reg {i}")
+    #     i2c_reg_write_debug(i, regs[i], t)
+
+    i = 1
+    # print(f"Writing into reg {i}")
+    i2c_reg_write_debug(i, regs[i], t)
+
+    i = 6
+    # print(f"Writing into reg {i}")
+    i2c_reg_write_debug(i, regs[i], t)
+
+    i = 7
+    # print(f"Writing into reg {i}")
+    i2c_reg_write_debug(i, regs[i], t)
+
+    # time.sleep(2)
 
 def burn_efuse():
     input("Change program done bit to 1")

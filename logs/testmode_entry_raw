@@ -1,0 +1,142 @@
+Test started at 2026-08-15 23:26:47.876184
+
+Starting SMU sequence...
+SMU sequence complete.
+Supply current in testmode is 186.52uA
+Frequency in testmode is 89.941KHz
+[1, 1, 1, 1, 0, 0, 1, 0]
+[0, 0, 0, 0, 1, 0, 0, 0]
+Starting SMU sequence...
+SMU sequence complete.
+Bandgap Voltage in testmode is 0.926V
+[1, 1, 1, 1, 0, 0, 1, 0]
+[0, 0, 0, 0, 1, 1, 1, 1]
+Starting SMU sequence...
+SMU sequence complete.
+Supply current in amplifier mode is 90.17uA
+Starting SMU sequence...
+SMU sequence complete.
+Supply current in testmode is 186.52uA
+Frequency in testmode is 89.950KHz
+[1, 1, 1, 1, 0, 0, 1, 0]
+[0, 0, 0, 0, 1, 0, 0, 0]
+Starting SMU sequence...
+SMU sequence complete.
+Bandgap Voltage in testmode is 0.926V
+[1, 1, 1, 1, 0, 0, 1, 0]
+[0, 0, 0, 0, 1, 1, 1, 1]
+Starting SMU sequence...
+SMU sequence complete.
+Supply current in amplifier mode is 90.17uA
+Starting SMU sequence...
+SMU sequence complete.
+Supply current in testmode is 186.55uA
+Frequency in testmode is 89.950KHz
+[1, 1, 1, 1, 0, 0, 1, 0]
+[0, 0, 0, 0, 1, 0, 0, 0]
+Starting SMU sequence...
+SMU sequence complete.
+Bandgap Voltage in testmode is 0.926V
+[1, 1, 1, 1, 0, 0, 1, 0]
+[0, 0, 0, 0, 1, 1, 1, 1]
+Starting SMU sequence...
+SMU sequence complete.
+Supply current in amplifier mode is 90.21uA
+Starting SMU sequence...
+SMU sequence complete.
+Supply current in testmode is 186.57uA
+Frequency in testmode is 89.970KHz
+[1, 1, 1, 1, 0, 0, 1, 0]
+[0, 0, 0, 0, 1, 0, 0, 0]
+Starting SMU sequence...
+SMU sequence complete.
+Bandgap Voltage in testmode is 0.926V
+[1, 1, 1, 1, 0, 0, 1, 0]
+[0, 0, 0, 0, 1, 1, 1, 1]
+Starting SMU sequence...
+SMU sequence complete.
+Supply current in amplifier mode is 90.32uA
+Starting SMU sequence...
+SMU sequence complete.
+Supply current in testmode is 186.74uA
+Frequency in testmode is 89.982KHz
+[1, 1, 1, 1, 0, 0, 1, 0]
+[0, 0, 0, 0, 1, 0, 0, 0]
+Starting SMU sequence...
+SMU sequence complete.
+Bandgap Voltage in testmode is 0.926V
+[1, 1, 1, 1, 0, 0, 1, 0]
+[0, 0, 0, 0, 1, 1, 1, 1]
+Starting SMU sequence...
+SMU sequence complete.
+Supply current in amplifier mode is 90.31uA
+Starting SMU sequence...
+SMU sequence complete.
+Supply current in testmode is 186.70uA
+Frequency in testmode is 89.966KHz
+[1, 1, 1, 1, 0, 0, 1, 0]
+[0, 0, 0, 0, 1, 0, 0, 0]
+Starting SMU sequence...
+SMU sequence complete.
+Bandgap Voltage in testmode is 0.926V
+[1, 1, 1, 1, 0, 0, 1, 0]
+[0, 0, 0, 0, 1, 1, 1, 1]
+Starting SMU sequence...
+SMU sequence complete.
+Supply current in amplifier mode is 90.29uA
+Starting SMU sequence...
+SMU sequence complete.
+Supply current in testmode is 186.66uA
+Frequency in testmode is 89.942KHz
+[1, 1, 1, 1, 0, 0, 1, 0]
+[0, 0, 0, 0, 1, 0, 0, 0]
+Starting SMU sequence...
+SMU sequence complete.
+Bandgap Voltage in testmode is 0.926V
+[1, 1, 1, 1, 0, 0, 1, 0]
+[0, 0, 0, 0, 1, 1, 1, 1]
+Starting SMU sequence...
+SMU sequence complete.
+Supply current in amplifier mode is 90.32uA
+Starting SMU sequence...
+SMU sequence complete.
+Supply current in testmode is 186.73uA
+Frequency in testmode is 89.988KHz
+[1, 1, 1, 1, 0, 0, 1, 0]
+[0, 0, 0, 0, 1, 0, 0, 0]
+Starting SMU sequence...
+SMU sequence complete.
+Bandgap Voltage in testmode is 0.926V
+[1, 1, 1, 1, 0, 0, 1, 0]
+[0, 0, 0, 0, 1, 1, 1, 1]
+Starting SMU sequence...
+SMU sequence complete.
+Supply current in amplifier mode is 90.32uA
+Starting SMU sequence...
+SMU sequence complete.
+Supply current in testmode is 186.73uA
+Frequency in testmode is 89.971KHz
+[1, 1, 1, 1, 0, 0, 1, 0]
+[0, 0, 0, 0, 1, 0, 0, 0]
+Starting SMU sequence...
+SMU sequence complete.
+Bandgap Voltage in testmode is 0.926V
+[1, 1, 1, 1, 0, 0, 1, 0]
+[0, 0, 0, 0, 1, 1, 1, 1]
+Starting SMU sequence...
+SMU sequence complete.
+Supply current in amplifier mode is 90.30uA
+Starting SMU sequence...
+SMU sequence complete.
+Supply current in testmode is 186.66uA
+Frequency in testmode is 89.958KHz
+[1, 1, 1, 1, 0, 0, 1, 0]
+[0, 0, 0, 0, 1, 0, 0, 0]
+Starting SMU sequence...
+SMU sequence complete.
+Bandgap Voltage in testmode is 0.926V
+[1, 1, 1, 1, 0, 0, 1, 0]
+[0, 0, 0, 0, 1, 1, 1, 1]
+Starting SMU sequence...
+SMU sequence complete.
+Supply current in amplifier mode is 90.32uA

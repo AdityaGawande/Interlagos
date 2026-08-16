@@ -12,13 +12,13 @@ Isense_low = -Isense_high
 
 
 # Current and voltage limits for safety
-SMUchA_current_limit = 0.001
+SMUchA_current_limit = 0.0002
 SMUchB_voltage_limit = 20
 VSUP_current_limit = 0.001
 relay_current_limit = 0.1
 SMUchA_voltage_range = 20
 SMUbad_voltage_range = 20
-SMUbad_current_limit = 0.001
+SMUbad_current_limit = 0.000025
 
 # Code constants
 DUMMY_MODE = 0
@@ -53,6 +53,7 @@ csv_filename = 'gsheet_trimbit_values.csv'
 # SHEET_ID = '1hF4Snpfwg6-8w03q6VBuWfcwUNAFX5iWZxPIyqwjrc4'
 SHEET_ID = '1d5e6bYR3UWXNtU9GqvDx5CAbm5iQKSkFBRPAPimTJb8'
 google_sheetname1 = "Python_sheet"
+auth_json = 'cobalt-list-302320-c192344088ee.json'
 
 # Visa transaction constants
 t = 0.1     # Changing this will break the I2C commands

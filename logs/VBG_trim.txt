@@ -1,0 +1,133 @@
+Test started at 2026-08-16 05:05:05.616200
+
+VBG trimbit changed to 0
+Updating Python_sheet...
+Bandgap Voltage in testmode is 0.925964V
+Bandgap Voltage in testmode is 0.925841V
+
+Test started at 2026-08-16 05:06:09.420603
+
+VBG trimbit changed to 1
+Updating Python_sheet...
+Bandgap Voltage in testmode is 0.945355V
+Bandgap Voltage in testmode is 0.945303V
+VBG trimbit changed to 2
+Updating Python_sheet...
+Bandgap Voltage in testmode is 0.964456V
+Bandgap Voltage in testmode is 0.964433V
+VBG trimbit changed to 3
+Updating Python_sheet...
+Bandgap Voltage in testmode is 0.982756V
+Bandgap Voltage in testmode is 0.982667V
+VBG trimbit changed to 4
+Updating Python_sheet...
+Bandgap Voltage in testmode is 1.000859V
+Bandgap Voltage in testmode is 1.000781V
+VBG trimbit changed to 5
+Updating Python_sheet...
+Bandgap Voltage in testmode is 1.018622V
+Bandgap Voltage in testmode is 1.018462V
+VBG trimbit changed to 6
+Updating Python_sheet...
+Bandgap Voltage in testmode is 1.035947V
+Bandgap Voltage in testmode is 1.035863V
+VBG trimbit changed to 7
+Updating Python_sheet...
+Bandgap Voltage in testmode is 1.053038V
+Bandgap Voltage in testmode is 1.053104V
+VBG trimbit changed to 8
+Updating Python_sheet...
+Bandgap Voltage in testmode is 1.069932V
+Bandgap Voltage in testmode is 1.069878V
+VBG trimbit changed to 9
+Updating Python_sheet...
+Bandgap Voltage in testmode is 1.086589V
+Bandgap Voltage in testmode is 1.086630V
+VBG trimbit changed to 10
+Updating Python_sheet...
+Bandgap Voltage in testmode is 1.103210V
+Bandgap Voltage in testmode is 1.103293V
+VBG trimbit changed to 11
+Updating Python_sheet...
+Bandgap Voltage in testmode is 1.119587V
+Bandgap Voltage in testmode is 1.119716V
+VBG trimbit changed to 12
+Updating Python_sheet...
+Bandgap Voltage in testmode is 1.136042V
+Bandgap Voltage in testmode is 1.135973V
+VBG trimbit changed to 13
+Updating Python_sheet...
+Bandgap Voltage in testmode is 1.152110V
+Bandgap Voltage in testmode is 1.152157V
+VBG trimbit changed to 14
+Updating Python_sheet...
+Bandgap Voltage in testmode is 1.168504V
+Bandgap Voltage in testmode is 1.168379V
+VBG trimbit changed to 15
+Updating Python_sheet...
+Bandgap Voltage in testmode is 1.184252V
+Bandgap Voltage in testmode is 1.184200V
+VBG trimbit changed to 16
+Updating Python_sheet...
+Bandgap Voltage in testmode is 1.200310V
+Bandgap Voltage in testmode is 1.200435V
+VBG trimbit changed to 17
+Updating Python_sheet...
+Bandgap Voltage in testmode is 1.216583V
+Bandgap Voltage in testmode is 1.216559V
+VBG trimbit changed to 18
+Updating Python_sheet...
+Bandgap Voltage in testmode is 1.232463V
+Bandgap Voltage in testmode is 1.232367V
+VBG trimbit changed to 19
+Updating Python_sheet...
+Bandgap Voltage in testmode is 1.232279V
+Bandgap Voltage in testmode is 1.232375V
+VBG trimbit changed to 20
+Updating Python_sheet...
+Bandgap Voltage in testmode is 1.232337V
+Bandgap Voltage in testmode is 1.232332V
+VBG trimbit changed to 21
+Updating Python_sheet...
+Bandgap Voltage in testmode is 1.232410V
+Bandgap Voltage in testmode is 1.232424V
+VBG trimbit changed to 22
+Updating Python_sheet...
+Bandgap Voltage in testmode is 1.232246V
+Bandgap Voltage in testmode is 1.232121V
+VBG trimbit changed to 23
+Updating Python_sheet...
+Bandgap Voltage in testmode is 1.232070V
+Bandgap Voltage in testmode is 1.232202V
+VBG trimbit changed to 24
+Updating Python_sheet...
+Bandgap Voltage in testmode is 1.232447V
+Bandgap Voltage in testmode is 1.232407V
+VBG trimbit changed to 25
+Updating Python_sheet...
+Bandgap Voltage in testmode is 1.232607V
+Bandgap Voltage in testmode is 1.232632V
+VBG trimbit changed to 26
+Updating Python_sheet...
+Bandgap Voltage in testmode is 1.232404V
+Bandgap Voltage in testmode is 1.232474V
+VBG trimbit changed to 27
+Updating Python_sheet...
+Bandgap Voltage in testmode is 1.232381V
+Bandgap Voltage in testmode is 1.232598V
+VBG trimbit changed to 28
+Updating Python_sheet...
+Bandgap Voltage in testmode is 1.232271V
+Bandgap Voltage in testmode is 1.232371V
+VBG trimbit changed to 29
+Updating Python_sheet...
+Bandgap Voltage in testmode is 1.232337V
+Bandgap Voltage in testmode is 1.232339V
+VBG trimbit changed to 30
+Updating Python_sheet...
+Bandgap Voltage in testmode is 1.232279V
+Bandgap Voltage in testmode is 1.232363V
+VBG trimbit changed to 31
+Updating Python_sheet...
+Bandgap Voltage in testmode is 1.232424V
+Bandgap Voltage in testmode is 1.232493V

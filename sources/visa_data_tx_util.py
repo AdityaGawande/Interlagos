@@ -14,8 +14,9 @@ low_level = i2c_low_level
 freq = i2c_freq
 time_period = i2c_time_period
 duty_cycle = i2c_duty_cycle
-# correction = 0.000220 # 220us # For server
-correction = time_period/4 #3us # For Thinkpad
+# correction = 0.000220       # 220us # For server    # hostname = SER-NODE4.iith.ac.in
+correction = time_period/4  #3ms    # For Thinkpad  # hostname = Gajendranath
+# correction = -0.000140      #-140us # For Desktop   # hostname = Desktop
 
 def run_smu_sequence_v2(length, arr_high, arr_low):
     if len(arr_high) != length or len(arr_low) != length:

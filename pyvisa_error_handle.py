@@ -1,6 +1,11 @@
 import time
 import pyvisa
+import gsheet_util
 from constants import error_handle_retries as retries, error_handle_delay as delay
+
+# Import this as rm. 
+# Comment out rm = pyvisa.ResourceManager(). 
+# Nothing else changes in the code.
 
 # retries = 50
 # delay = 0.1
@@ -82,6 +87,7 @@ def open_resource_safe(rm, resource_name, error_handler,
 
 def error_handler():
     print("Send an email here")
+    gsheet_util.email_sender("There is an error in the script.")
     input("Program paused for manual intervention")
     
 def open_resource(res_addr):
@@ -95,11 +101,11 @@ def open_resource(res_addr):
     res = RetryInstrument(res, error_handler, retries, delay)
     return res
 
-i = 100
-while(i > 0):
-    # dmm = open_resource(dmm1_addr)
-    dmm = open_resource("TCPIP0::10.9.0.81::inst0::INSTR")
-    print("Connected to:", dmm.query("*IDN?").strip())
-    dmm.close()
-    print(f"Iter no. {100-i} was successful")
-    i = i-1
+# i = 100
+# while(i > 0):
+#     # dmm = open_resource(dmm1_addr)
+#     dmm = open_resource("TCPIP0::10.9.0.81::inst0::INSTR")
+#     print("Connected to:", dmm.query("*IDN?").strip())
+#     dmm.close()
+#     print(f"Iter no. {100-i} was successful")
+#     i = i-1

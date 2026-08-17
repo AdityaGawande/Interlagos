@@ -1,2 +1,3 @@
 cobalt-list*
 __pycache__/*
+secrets.py

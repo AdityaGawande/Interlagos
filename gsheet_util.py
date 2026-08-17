@@ -3,6 +3,7 @@ from oauth2client.service_account import ServiceAccountCredentials
 import csv
 import os
 from constants import SHEET_ID, google_sheetname1, csv_filename, auth_json
+import secrets
 
 # Google Sheets API setup
 def authenticate_google_sheets(credentials_file):
@@ -12,7 +13,7 @@ def authenticate_google_sheets(credentials_file):
     return client
 
 def download_sheet_as_csv(sheet_id, sheet_name, output_file):
-    client = authenticate_google_sheets('cobalt-list-302320-c192344088ee.json')
+    client = authenticate_google_sheets(auth_json)
     sheet = client.open_by_key(sheet_id).worksheet(sheet_name)
     data = sheet.get_all_values()
     
@@ -87,3 +88,18 @@ def write_value(cell_addr, value):
     worksheet.update_cells([cell], value_input_option='RAW')
 
     # print(f"Updated cell {cell_addr} with value: {value}")
+    
+## EMAIL utility
+import smtplib
+from email.message import EmailMessage
+
+def email_sender(email_content):
+    msg = EmailMessage()
+    msg["Subject"] = "Email sent from CSA testing setup"
+    msg["From"] = "aadityapgawande@gmail.com"
+    msg["To"] = "ee22b26m100004@iith.ac.in"
+    msg.set_content(email_content)
+
+    with smtplib.SMTP_SSL("smtp.gmail.com", 465) as smtp:
+        smtp.login("aadityapgawande@gmail.com", secrets.gmail_app_password)
+        smtp.send_message(msg)

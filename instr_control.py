@@ -1,9 +1,12 @@
-import pyvisa
 import time
 from constants import *
 from concurrent.futures import ThreadPoolExecutor
 
-rm = pyvisa.ResourceManager()
+# rm = pyvisa.ResourceManager()
+import pyvisa_error_handle as rm
+
+delay1 = sleep_after_resource_open
+delay2 = sleep_after_voltage_change
 
 # Easy to read wrappers
 def VREF_set(voltage):
@@ -15,52 +18,57 @@ def VCM_set(voltage):
 def Isense_set(current):
     SMUchB_current_set(current)
 
-# SMU section
+## SMU section
 def SMUchA_voltage_set(voltage):
     smu = rm.open_resource(smu_2ch_addr)
-    time.sleep(0.1)
+    time.sleep(delay1)
     smu.write("smua.source.func = smua.OUTPUT_DCVOLTS")
     smu.write(f"smua.source.rangev = {SMUchA_voltage_range}")
     smu.write(f"smua.source.levelv = {voltage}")
     smu.write(f"smua.source.limiti = {SMUchA_current_limit}")
     smu.write("smua.source.output = smua.OUTPUT_ON")
     smu.close()
-    time.sleep(1)
+    time.sleep(delay2)
 
 def SMUchB_current_set(current):
     smu = rm.open_resource(smu_2ch_addr)
-    time.sleep(0.1)
+    time.sleep(delay1)
     smu.write("smub.source.func = smub.OUTPUT_DCAMPS")
     smu.write(f"smub.source.leveli = {current}")
     smu.write(f"smub.source.limitv = {SMUchB_voltage_limit}")
     smu.write("smub.source.output = smub.OUTPUT_ON")
     smu.close()
-    time.sleep(1)
+    time.sleep(delay2)
 
 def SMUbad_voltage_set(voltage):
-    # Write code here
     smu_vcm = rm.open_resource(smu_bad_addr)
     # time.sleep(1)
     smu_vcm.write(":SOUR:FUNC VOLT")
     smu_vcm.write(f":SOUR:VOLT:RANG {SMUbad_voltage_range}")
-    smu_vcm.write(f":SENS:CURR:RANG {SMUbad_current_limit*4}")
+    smu_vcm.write(f":SENS:CURR:RANG {SMUbad_current_range}")
     smu_vcm.write(f":SOUR:VOLT:ILIMIT {SMUbad_current_limit}")
-    smu_vcm.write(f":SENS:CURR:RANG {SMUbad_current_limit}") # This is because the SMU does not allow massive jumps in either sense range or source limit (they are related)
+    smu_vcm.write(f":SENS:CURR:RANG {SMUbad_current_limit}") 
+    # This is because the SMU does not allow massive jumps in either 
+    # sense range or source limit (they are related)
     # time.sleep(1)
     smu_vcm.write(f":SOUR:VOLT {voltage}")
     smu_vcm.write(":OUTP ON")
-    time.sleep(1)
+    
+    time.sleep(delay2)
+    # If current is not measured, the SMU sometimes gets stuck with an old isense measurement.
+    # The old isense measurement may hit the limit, and the output voltage is not correct.
     smu_vcm.query(":MEAS:CURR?")
+    
     smu_vcm.close()
 
+# SMU shutdown (Turns outputs off)
 def SMU_shutdown():
     smu_vcm = rm.open_resource(smu_bad_addr)
     smu = rm.open_resource(smu_2ch_addr)
-    
     smu_vcm.write(":OUTP OFF")
     smu.write("smua.source.output = smua.OUTPUT_OFF")
     smu.write("smub.source.output = smub.OUTPUT_OFF")
-    time.sleep(1)
+    time.sleep(delay2)
     smu_vcm.close()
     smu.close()
 
@@ -76,19 +84,12 @@ def SMUbad_shutdown():
     # smu.close()
 
 def SMUchA_output_off():
-    # Connect to the Keithley 2636B using the correct VISA address
-    smu = rm.open_resource(smu_2ch_addr)  # Replace with your actual VISA address
-
-    # Verify connection (optional)
-    # print("Connected to:", smu.query("*IDN?").strip())
-
-    smu.write("smua.source.output = smua.OUTPUT_OFF")       # Enable output
-    
+    smu = rm.open_resource(smu_2ch_addr)
+    smu.write("smua.source.output = smua.OUTPUT_OFF")
     smu.close()
 
-# PSU section
-
-# AFG section
+## AFG section
+# Sets a DC voltage on AFG ch1 for IREF measurement
 def CLK_DC_voltage_set(voltage):
     afg = rm.open_resource(afg_addr)
     afg.write("SOUR1:BURST:STATE OFF")
@@ -98,7 +99,8 @@ def CLK_DC_voltage_set(voltage):
     afg.write(f"SOUR1:VOLT:OFFS {voltage}")
     afg.write("OUTP1 ON")
 
-# DMM section
+## DMM measurements section - Trimming mode
+# Measures CLK on DMM2. Assumes clock is already visible at DMM2. Returns freq in KHz
 def dmm_measure_clk():
     dmm2 = rm.open_resource(dmm2_addr)
     dmm2.write("CONF:FREQ")
@@ -113,7 +115,9 @@ def dmm_measure_clk():
     frequency = float(dmm2.query("FETCH?"))/1000
     print(f"Frequency in testmode is {frequency:.3f}KHz")
     dmm2.close()
+    return frequency*1000
 
+# Measures VBG on DMM2. Assumes voltage is already visible at DMM2. Returns voltage in V
 def dmm_measure_vbg():
     dmm2 = rm.open_resource(dmm2_addr)
     dmm2.write("CONF:VOLT")
@@ -127,8 +131,10 @@ def dmm_measure_vbg():
     voltage = float(dmm2.query("FETCH?"))
     print(f"Bandgap Voltage in testmode is {voltage:.6f}V")
     dmm2.close()
+    return voltage
 
-def dmm_measure_IQ():
+# Measures Iq on DMM3. Returns current in A
+def dmm_measure_iq():
     dmm3 = rm.open_resource(dmm3_addr)
     dmm3.write("CONF:CURR")
     dmm3.write(":SENS:CURR:DC:RANGE 0.001")
@@ -143,7 +149,8 @@ def dmm_measure_IQ():
     dmm3.close()
     return current
 
-def dmm_measure_IREF():
+# Measures Iref on DMM1. Assumes current is already visible at DMM1. Returns current in A
+def dmm_measure_iref():
     dmm1 = rm.open_resource(dmm1_addr)
     dmm1.write("CONF:CURR")
     dmm1.write(":SENS:CURR:DC:RANGE 0.0001")
@@ -157,21 +164,20 @@ def dmm_measure_IREF():
     print(f"IREF current is {(current*(float(1000000000))):.0f}nA")
     # print(f"Supply current is {current*10^6}uA")
     dmm1.close()
-    # return current
+    return current
 
-def IREF_current_check():
-    current = dmm_measure_IREF()
-    print(f"Supply current in testmode is {(current*(float(1000000000))):.0f}nA")
-
+# Wrappers for printing current into terminal
 def Testmode_current_check():
-    current = dmm_measure_IQ()
+    current = dmm_measure_iq()
     print(f"Supply current in testmode is {(current*(float(1000000))):.2f}uA")
 
 def Amplifier_current_check():
-    current = dmm_measure_IQ()
+    current = dmm_measure_iq()
     print(f"Supply current in amplifier mode is {(current*(float(1000000))):.2f}uA")
 
-# DMM measurements section
+
+## DMM measurements section - Amplifier mode
+# Provides handles for the DMMs. Sets up NPLC, range and Trigger mode
 def dmm_measure_x3_setup():
     dmm1 = rm.open_resource(dmm1_addr)
     dmm1.write(":SENS:VOLT:DC:RANGE 0.1")
@@ -190,6 +196,7 @@ def dmm_measure_x3_setup():
 
     return dmm1, dmm2, dmm3
 
+# Three measurements taken simultaneously. Returns the results as float
 def dmm_measure_x3_single(dmm1, dmm2, dmm3):   
     # Sent at the same time to ensure the delays to the trigger command are same
     # Tried this for debugging higher timings while measuring 1V and 100V, but kept for the principle of it
@@ -203,7 +210,8 @@ def dmm_measure_x3_single(dmm1, dmm2, dmm3):
         executor.submit(dmm1.write, "*TRG\n")
         executor.submit(dmm2.write, "*TRG\n")
         executor.submit(dmm3.write, "*TRG\n")
-    # This should be 2 seconds + some small delay, but it realistically takes 4 seconds, or it bugs out during fetch
+    # This should be 2 seconds + some small delay, but it realistically takes 4 seconds, 
+    # or it bugs out during fetch
     time.sleep(4)
 
     r11 = float(dmm1.query("FETCH?"))
@@ -213,11 +221,13 @@ def dmm_measure_x3_single(dmm1, dmm2, dmm3):
     # return results
     return r11, r21, r31
 
+# Closes DMM handles
 def dmm_measure_x3_deinit(dmm1, dmm2, dmm3):
     dmm1.close()
     dmm2.close()
     dmm3.close()
 
+# Deprecated
 def dmm_measure_x3():
     # Deprecated. Do not use. Although it should still work
     dmm1 = rm.open_resource(dmm1_addr)
@@ -266,7 +276,8 @@ def dmm_measure_x3():
 
     return results
 
-# PSU commands section
+## PSU commands section
+# Sets supply voltage for one CSA
 def VSUP_voltage_set(IC_num, voltage):
     psu = rm.open_resource(psu_addr)
     psu.write(f"INST:NSEL {IC_num}")
@@ -275,8 +286,8 @@ def VSUP_voltage_set(IC_num, voltage):
     psu.write("OUTP ON")  # Turn on output for the channel
     psu.close()
 
+# Turns the supply off and on - to ensure testmode is exited
 def VSUP_voltage_reset(IC_num):
-    # Turns the supply off and on - to ensure testmode is exited
     psu = rm.open_resource(psu_addr)
     psu.write(f"INST:NSEL {IC_num}")
     psu.write("OUTP OFF")  # Turn on output for the channel
@@ -284,6 +295,7 @@ def VSUP_voltage_reset(IC_num):
     psu.write("OUTP ON")  # Turn on output for the channel
     psu.close()   
 
+# Changes relay supply voltage for trim circuit config
 def circuit_config_trim():
     psu = rm.open_resource(psu_addr)
     psu.write(f"INST:NSEL 3")
@@ -293,6 +305,7 @@ def circuit_config_trim():
     time.sleep(res_connection_delay)
     psu.close() 
 
+# Changes relay supply voltage for amplifier circuit config
 def circuit_config_amp():
     psu = rm.open_resource(psu_addr)
     psu.write(f"INST:NSEL 3")
@@ -302,7 +315,8 @@ def circuit_config_amp():
     time.sleep(res_connection_delay)
     psu.close() 
 
-# Sanity checks
+
+## Sanity checks
 def instrument_check():
     dmm1 = rm.open_resource(dmm1_addr)
     print("Connected to:", dmm1.query("*IDN?").strip())
@@ -332,6 +346,7 @@ def instrument_check():
     print("Connected to:", psu.query("*IDN?").strip())
     psu.close()
 
+# Res connect and disconnect are deprecated
 # def vsense_res_disconnect():
 #     # --- Define settings for each channel ---
 #     channel_settings = {
@@ -358,6 +373,7 @@ def instrument_check():
 
 #     psu.close()
 
+# Res connect and disconnect are deprecated
 # def vsense_res_connect():
 #     # --- Define settings for each channel ---
 #     channel_settings = {

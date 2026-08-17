@@ -19,6 +19,7 @@ relay_current_limit = 0.1
 SMUchA_voltage_range = 20
 SMUbad_voltage_range = 20
 SMUbad_current_limit = 0.000025
+SMUbad_current_range = 0.0001
 
 # Code constants
 DUMMY_MODE = 0
@@ -28,6 +29,9 @@ res_connection_delay = 3
 vref_set_to_testmode_seq_delay = 5
 sleep_after_testmode_entry = 2
 testmode_exit_delay = 5
+sleep_after_voltage_change = 1
+sleep_after_resource_open = 0.1
+sleep_between_VSUP_power_reset = 0.3
 
 
 # Instrument constants
@@ -55,6 +59,17 @@ SHEET_ID = '1d5e6bYR3UWXNtU9GqvDx5CAbm5iQKSkFBRPAPimTJb8'
 google_sheetname1 = "Python_sheet"
 auth_json = 'cobalt-list-302320-c192344088ee.json'
 
-# Visa transaction constants
-t = 0.1     # Changing this will break the I2C commands
+# Visa transactions
+t = 0.1     # Was critical for I2C. Deprecated now
 afg_load_res = 67
+
+# I2C voltages and timing
+i2c_high_level = 2
+i2c_low_level = 0.005
+i2c_freq = 100
+i2c_time_period = 1/i2c_freq
+i2c_duty_cycle = 0.5
+
+# Error handling
+error_handle_retries = 20
+error_handle_delay = 0.2

@@ -1,5 +1,8 @@
 # Calibration constants
 G0 = 50
+active_chip_slot = 2
+active_chip_id = 3
+
 
 # Measurement settings
 VCM_low = 0.5
@@ -69,6 +72,7 @@ i2c_low_level = 0.005
 i2c_freq = 100
 i2c_time_period = 1/i2c_freq
 i2c_duty_cycle = 0.5
+i2c_delay_between_commands = 0.5
 
 # Error handling
 error_handle_retries = 20

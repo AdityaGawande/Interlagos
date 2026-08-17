@@ -1,6 +1,6 @@
 import csv
-import binary_utils
-from constants import csv_filename
+import sources.binary_utils as binary_utils
+from sources.constants import csv_filename
 
 def read_csv(filename):
     parameters = {}

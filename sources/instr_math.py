@@ -1,4 +1,4 @@
-from constants import G0
+from sources.constants import G0
 from math import log10
 
 def gain_error_differential(V21, VO1, V22, VO2):

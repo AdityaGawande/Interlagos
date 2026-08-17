@@ -2,8 +2,8 @@ import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import csv
 import os
-from constants import SHEET_ID, google_sheetname1, csv_filename, auth_json
-import secrets
+from sources.constants import SHEET_ID, google_sheetname1, csv_filename, auth_json
+import auth_keys.secrets as secrets
 
 # Google Sheets API setup
 def authenticate_google_sheets(credentials_file):

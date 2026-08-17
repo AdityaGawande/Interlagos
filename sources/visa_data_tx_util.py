@@ -1,9 +1,9 @@
 import pyvisa
 import time
-from constants import *
+from sources.constants import *
 
 # rm = pyvisa.ResourceManager()
-import pyvisa_error_handle as rm
+import sources.pyvisa_error_handle as rm
 
 # Low and high level of the data and clock in volts
 high_level = i2c_high_level

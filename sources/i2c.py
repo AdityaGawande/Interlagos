@@ -1,15 +1,17 @@
-import csv_utils
-import gsheet_util
+import sources.csv_utils as csv_utils
+import sources.gsheet_util as gsheet_util
 import time
-from constants import t, testmode_exit_delay, vref_set_to_testmode_seq_delay, sleep_after_testmode_entry, DUMMY_MODE
-import visa_data_tx_util
+from sources.constants import t, vref_set_to_testmode_seq_delay, sleep_after_testmode_entry, DUMMY_MODE, i2c_delay_between_commands
+import sources.visa_data_tx_util as visa_data_tx_util
+
+delay1 = i2c_delay_between_commands
 
 if (DUMMY_MODE == 1):
     import deprecated_code.relay_power_control_dummy as instr_control
     from deprecated_code.visa_data_tx_util_dummy import run_smu_sequence
 else:
-    import instr_control
-    from visa_data_tx_util import run_smu_sequence, run_smu_sequence_v2
+    import sources.instr_control as instr_control
+    from sources.visa_data_tx_util import run_smu_sequence, run_smu_sequence_v2
 
 def i2c_reg_write_v2(reg_addr_dec, data):
     # Validate length
@@ -88,7 +90,7 @@ def i2c_reg_write(reg_addr_dec, data, t=0.01):
     # Call the provided SMU sequence function
     run_smu_sequence(length, arr_high, arr_low, t)
 
-# Deprecate this out. Make a v2 and wrapper on top.
+# Deprecated
 def testmode_entry(t=0.01):
     
     print("Disconnecting Vsense resistor")
@@ -116,7 +118,29 @@ def testmode_entry(t=0.01):
     # visa_pwr_update_util.testmode_pwr_ref_reset()
     time.sleep(sleep_after_testmode_entry)
 
-# Deprecate this out. Make a v2 and wrapper on top.
+def testmode_entry_v2():
+    # It is assumed that circuit is in testmode configuration. This is for Trimming Part 1, hence, circuit config commands do not apply.
+    # It is assumed that the chip is powered on at 5V. Power resets (if required) need to be performed before running this command.
+    instr_control.VREF_set(8)
+    testmode_entry_sequence()
+    time.sleep(delay1)
+    testmode_entry_sequence()
+    time.sleep(delay1)
+    instr_control.VREF_off()    
+
+def testmode_entry_sequence():
+    seq_without_buf = [1,0,1,0,0,1,0,1,0,1,1,0] # This is 12 bits
+    seq = [1]*4 + seq_without_buf + [1]*4   # This is 20 bits
+
+    # First bit needs to be an offset thing always
+    arr_high = seq
+    arr_low = seq
+
+    # Call the provided SMU sequence function
+    # run_smu_sequence(20, arr_high, arr_low, t)
+    visa_data_tx_util.run_smu_sequence_v2(20, arr_high, arr_low)
+
+# Deprecated
 def testmode_entry_debug(t=0.01):
     # print("Disconnecting Vsense resistor")
     # instr_control.circuit_config_trim()
@@ -142,13 +166,14 @@ def testmode_entry_debug(t=0.01):
     # time.sleep(sleep_after_testmode_entry)
 
 # Check if this is good enough. Make wrapper on top of this
-def testmode_exit(t=0.01):
+def testmode_exit():
     
     reg_addr = 8   #f2
     data = [0,0,0,0,1,1,1,1]    #0f
 
     # Call the provided SMU sequence function
-    i2c_reg_write_v2(reg_addr, data, t)
+    i2c_reg_write_v2(reg_addr, data)
+    i2c_reg_write_v2(reg_addr, data)
 
     # print("Connecting Vsense resistor")
     # instr_control.vsense_res_connect()

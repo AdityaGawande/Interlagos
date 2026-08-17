@@ -1,9 +1,9 @@
 import time
-from constants import *
+from sources.constants import *
 from concurrent.futures import ThreadPoolExecutor
 
 # rm = pyvisa.ResourceManager()
-import pyvisa_error_handle as rm
+import sources.pyvisa_error_handle as rm
 
 delay1 = sleep_after_resource_open
 delay2 = sleep_after_voltage_change
@@ -12,6 +12,9 @@ delay2 = sleep_after_voltage_change
 def VREF_set(voltage):
     SMUbad_voltage_set(voltage)
 
+def VREF_off():
+    SMUbad_shutdown()
+    
 def VCM_set(voltage):
     SMUchA_voltage_set(voltage)
 
@@ -138,12 +141,12 @@ def dmm_measure_iq():
     dmm3 = rm.open_resource(dmm3_addr)
     dmm3.write("CONF:CURR")
     dmm3.write(":SENS:CURR:DC:RANGE 0.001")
-    dmm3.write(":SENS:CURR:DC:NPLC 100")
+    dmm3.write(":SENS:CURR:DC:NPLC 1")
     dmm3.write("TRIG:SOUR BUS")
     dmm3.write("INIT")
-    time.sleep(0.5)
+    # time.sleep(0.5)
     dmm3.write("*TRG")
-    time.sleep(1.5)
+    # time.sleep(1.5)
     current = float(dmm3.query("FETCH?"))
     # print(f"Supply current is {current*10^6}uA")
     dmm3.close()

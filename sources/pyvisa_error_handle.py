@@ -1,7 +1,7 @@
 import time
 import pyvisa
-import gsheet_util
-from constants import error_handle_retries as retries, error_handle_delay as delay
+import sources.gsheet_util as gsheet_util
+from sources.constants import error_handle_retries as retries, error_handle_delay as delay
 
 # Import this as rm. 
 # Comment out rm = pyvisa.ResourceManager(). 

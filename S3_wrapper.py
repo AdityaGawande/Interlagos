@@ -1,5 +1,6 @@
 # Move all of this code in Tn_wrappers and trimming_tests. S3 should be the old S4
 
+
 # This should update data from google sheet
 # Enter testmode and wait to verify that testmode has been activated
 # Measure voltage at VREF using the same SMU
@@ -163,6 +164,7 @@ def VBG_stability():
     i2c.testmode_exit()
     instr_control.Amplifier_current_check()
 
+# Deprecated. Use i2c.testmode_entry_v2 instead
 def testmode_entry_shortcut():
     instr_control.SMUbad_voltage_set(8)
     i2c.testmode_entry_debug()

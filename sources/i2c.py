@@ -5,8 +5,8 @@ from constants import t, testmode_exit_delay, vref_set_to_testmode_seq_delay, sl
 import visa_data_tx_util
 
 if (DUMMY_MODE == 1):
-    import relay_power_control_dummy as instr_control
-    from visa_data_tx_util_dummy import run_smu_sequence
+    import deprecated_code.relay_power_control_dummy as instr_control
+    from deprecated_code.visa_data_tx_util_dummy import run_smu_sequence
 else:
     import instr_control
     from visa_data_tx_util import run_smu_sequence, run_smu_sequence_v2

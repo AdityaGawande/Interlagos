@@ -1,3 +1,5 @@
+# Fully deprecated code
+
 # import pyvisa
 import time
 from constants import psu_addr, res_connection_delay

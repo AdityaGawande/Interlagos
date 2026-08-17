@@ -1,3 +1,5 @@
+# Move all of this code in Tn_wrappers and trimming_tests. S3 should be the old S4
+
 # This should update data from google sheet
 # Enter testmode and wait to verify that testmode has been activated
 # Measure voltage at VREF using the same SMU
@@ -12,16 +14,20 @@
 # Change instrument for VREF and IN+/IN-
 # Turn instruments on and off in the init portion (atleast keep a note of it)
 
-import i2c
-import gsheet_util
-import instr_top
+import sources.i2c as i2c
+import sources.gsheet_util as gsheet_util
+# import instr_top
 import time
-import instr_control
-from constants import G0 as Gain_ideal
+import sources.instr_control as instr_control
+from sources.constants import G0 as Gain_ideal
 import standard_tests
 
 # Options -
 # 1. Update trimbit values from sheet - all values (enter testmode, write bits and exit. Ask for ACK before each step)
+
+# Measure gain 10 times
+# Update trim values
+# Measure gain 10 times
 
 def testmode_entry_exit_check():
     # print("Updating values from Google sheet...")
@@ -64,10 +70,6 @@ def testmode_entry_exit_check():
     # i2c.testmode_exit()
     # instr_top.honest_to_god_cmrr_init() # Does this have to be removed?
     
-# Measure gain 10 times
-# Update trim values
-# Measure gain 10 times
-
 def VBG_trimbit_trial(trimvalue):
     gsheet_util.write_value('B2', trimvalue)
     print(f"VBG trimbit changed to {trimvalue}")
@@ -211,7 +213,6 @@ def VBG_trim():
     i2c.testmode_exit()
     instr_control.Amplifier_current_check()
 
-
 def IREF_trim():
     # print("Updating values from Google sheet...")
     gsheet_util.csv_file_update()
@@ -266,7 +267,6 @@ def IREF_trim():
     i2c.testmode_exit()
     instr_control.Amplifier_current_check()
 
-
 def IREF_trimcode_shortcut(trimvalue):
     gsheet_util.write_value('B4', trimvalue)
     print(f"IREF trimbit changed to {trimvalue}")
@@ -283,11 +283,9 @@ def IREF_trimcode_shortcut(trimvalue):
     instr_control.dmm_measure_IREF()
     instr_control.dmm_measure_IREF()
 
-
 def IREF_stability():
     IREF_trimcode_shortcut(27)
     IREF_trimcode_shortcut(28)
-
 
 def VBG_testmode_exit_stability():
     i = 17

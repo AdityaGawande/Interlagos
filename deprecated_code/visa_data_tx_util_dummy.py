@@ -1,3 +1,5 @@
+## Code used for debugging in the past
+
 # import pyvisa
 import time
 

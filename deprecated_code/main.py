@@ -1,3 +1,5 @@
+# Deprecated code
+
 # Comments for future changes and design style
 # 1. Make options in switch style
 # 2. Make options hierarchical

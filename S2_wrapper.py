@@ -1,5 +1,5 @@
 import standard_tests
-from constants import G0 as Gain_ideal
+from sources.constants import G0 as Gain_ideal
 
 standard_tests.Starter()
 

@@ -1,7 +1,7 @@
 from datetime import datetime
-import instr_control
-import instr_math
-from constants import VCM_low, VCM_high, Isense_high, Isense_low, VREF_voltage, VSUP_typical, VSUP_current_limit
+import sources.instr_control as instr_control
+import sources.instr_math as instr_math
+from sources.constants import VCM_low, VCM_high, Isense_high, Isense_low, VREF_voltage, VSUP_typical, VSUP_current_limit
 
 def Starter():
     now = str(datetime.now())

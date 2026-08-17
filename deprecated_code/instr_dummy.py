@@ -1,3 +1,5 @@
+# Made for debugging. Not needed anymore
+
 def SMUchA_voltage_set(voltage):
     print("Dummy version of SMUchA voltage control")
 

@@ -1,3 +1,5 @@
+## Fully deprecated code 
+
 import pyvisa
 import time
 

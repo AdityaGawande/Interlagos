@@ -1,3 +1,5 @@
+# Made for testing error handling. Do not use.
+
 import time
 import pyvisa
 from constants import error_handle_retries as retries, error_handle_delay as delay

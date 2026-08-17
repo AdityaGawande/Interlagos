@@ -1,3 +1,6 @@
+## Code used for debugging in the past
+
+
 # CM_voltage = 1.5 
 
 # isense=0.002

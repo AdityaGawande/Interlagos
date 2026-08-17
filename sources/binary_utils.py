@@ -1,3 +1,4 @@
+# Not used anywhere
 def combine_to_64_bit_array(bit_arrays):
     combined = []
     for bits in bit_arrays.values():
@@ -11,6 +12,7 @@ def combine_to_64_bit_array(bit_arrays):
 
     return combined
 
+# Used for CSV to regs conversion in csv_utils
 def generate_fixed_length_binary_arrays(params):
     bit_arrays = {}
     for key, data in params.items():

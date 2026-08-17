@@ -1,3 +1,5 @@
+# Deprecated code
+
 import instr_control
 import instr_combined
 import instr_math

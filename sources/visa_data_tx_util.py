@@ -1,5 +1,6 @@
 import pyvisa
 import time
+from concurrent.futures import ThreadPoolExecutor
 from sources.constants import *
 
 # rm = pyvisa.ResourceManager()
@@ -13,6 +14,7 @@ low_level = i2c_low_level
 freq = i2c_freq
 time_period = i2c_time_period
 duty_cycle = i2c_duty_cycle
+correction = 0.000220 # 220us
 
 def run_smu_sequence_v2(length, arr_high, arr_low):
     if len(arr_high) != length or len(arr_low) != length:
@@ -50,25 +52,41 @@ def run_smu_sequence_v2(length, arr_high, arr_low):
         else:
             smu.write(f"smua.source.levelv = {low_level}")
 
+
+
         # input("Wait and check, before clock")
         time.sleep(time_period/2)
+
+        with ThreadPoolExecutor() as executor:
+                executor.submit(afg.write, "*TRG\n")
+                executor.submit(SMU_high_transition, smu, arr_high, i)
+                # executor.submit(dmm3.write, "*TRG\n")
         
-        afg.write("*TRG \n")
+        # afg.write("*TRG \n")
         # There should be some delay between the AFG trigger and SMU data,
         # but the SMU takes some time to reflect the LAN command, so this works out.
         # time.sleep(time_period_test/4)
         
-        if arr_high[i]:
-            smu.write(f"smua.source.levelv = {high_level}")
-        else:
-            smu.write(f"smua.source.levelv = {low_level}")
+        # if arr_high[i]:
+        #     smu.write(f"smua.source.levelv = {high_level}")
+        # else:
+        #     smu.write(f"smua.source.levelv = {low_level}")
         time.sleep(time_period/2)
         
         # input("Data transition here")
         
         
     # print("SMU sequence complete.")
-    
+
+
+def SMU_high_transition(smu, arr_high, i):
+    time.sleep(time_period/4 - correction)
+    if arr_high[i]:
+        smu.write(f"smua.source.levelv = {high_level}")
+    else:
+        smu.write(f"smua.source.levelv = {low_level}")
+
+
 def run_smu_sequence(length, arr_high, arr_low, t=0.00025):
     # Used in old versions of testmode entry and i2c reg write
     if len(arr_high) != length or len(arr_low) != length:

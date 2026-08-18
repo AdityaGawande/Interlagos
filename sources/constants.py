@@ -32,7 +32,7 @@ res_connection_delay = 3
 vref_set_to_testmode_seq_delay = 5
 sleep_after_testmode_entry = 2
 testmode_exit_delay = 5
-sleep_after_voltage_change = 1
+sleep_after_voltage_change = 0.2
 sleep_after_resource_open = 0.1
 sleep_between_VSUP_power_reset = 0.3
 
@@ -69,10 +69,10 @@ afg_load_res = 67
 # I2C voltages and timing
 i2c_high_level = 2
 i2c_low_level = 0.005
-i2c_freq = 1000
+i2c_freq = 500
 i2c_time_period = 1/i2c_freq
 i2c_duty_cycle = 0.5
-i2c_delay_between_commands = 0
+i2c_delay_between_commands = 0.1
 
 # Error handling
 error_handle_retries = 20

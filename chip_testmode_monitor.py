@@ -73,11 +73,11 @@ def printer(choice):
             ("B32", str4)
             ]
         
-        # print(f"{current:.3f}uA\t\t{clk_freq:.3f}KHz\t\t{vbg:.6f}V\t\t{iref_current:.0f}nA")
+        print(f"{current:.3f}uA\t\t{clk_freq:.3f}KHz\t\t{vbg:.6f}V\t\t{iref_current:.0f}nA")
         # write_value(cell_value_pairs)
         # print("Iteration completed")
         
-        write_value(cell_value_pairs)
+        # write_value(cell_value_pairs)
         # write_value('B15', clk_freq)
         # write_value('B24', vbg)
         # write_value('B33', iref_current)
@@ -90,5 +90,5 @@ def printer(choice):
         
         # time.sleep(1)
 
-choice = input("0 for current\n1 for full measurements\nEnter - ")
+choice = int(input("0 for current\n1 for full measurements\nEnter - "))
 printer(choice)

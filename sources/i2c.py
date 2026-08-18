@@ -123,9 +123,9 @@ def testmode_entry_v2():
     # It is assumed that the chip is powered on at 5V. Power resets (if required) need to be performed before running this command.
     instr_control.VREF_set(8)
     testmode_entry_sequence()
-    time.sleep(delay1)
+    # time.sleep(delay1)
     testmode_entry_sequence()
-    time.sleep(delay1)
+    # time.sleep(delay1)
     instr_control.VREF_off()
     instr_control.SMU_shutdown()
 
@@ -180,22 +180,25 @@ def testmode_exit():
     instr_control.SMU_shutdown()
 
 ## Writes into testmode reg to access internal nodes
-def testmode_VBG(t=0.01):
+def testmode_VBG():
     reg_addr = 8   #f2
     data = [0,0,0,0,1,0,0,0]    #08
     # Call the provided SMU sequence function
     i2c_reg_write_v2(reg_addr, data)
+    i2c_reg_write_v2(reg_addr, data)
 
-def testmode_IREF(t=0.01):
+def testmode_IREF():
     reg_addr = 8   #f2
     data = [0,0,0,0,1,1,1,0]    #0E
     # Call the provided SMU sequence function
     i2c_reg_write_v2(reg_addr, data)
+    i2c_reg_write_v2(reg_addr, data)
 
-def testmode_CLK(t=0.01):
+def testmode_CLK():
     reg_addr = 8   #f2
     data = [0,0,0,0,0,0,0,0]    #00
     # Call the provided SMU sequence function
+    i2c_reg_write_v2(reg_addr, data)
     i2c_reg_write_v2(reg_addr, data)
 
 ## Dumps trimbits
@@ -238,13 +241,13 @@ def trimbits_dump_vbg():
 
     for i in range(0,2):
         # print(f"Writing into reg {i}")
-        i2c_reg_write_v2(i, regs[i], t)
-        i2c_reg_write_v2(i, regs[i], t)
+        i2c_reg_write_v2(i, regs[i])
+        i2c_reg_write_v2(i, regs[i])
 
     i = 7
     # print(f"Writing into reg {i}")
-    i2c_reg_write_v2(i, regs[i], t)
-    i2c_reg_write_v2(i, regs[i], t)
+    i2c_reg_write_v2(i, regs[i])
+    i2c_reg_write_v2(i, regs[i])
 
     # time.sleep(2)
 
@@ -253,13 +256,13 @@ def trimbits_dump_iref():
 
     for i in range(0,2):
         # print(f"Writing into reg {i}")
-        i2c_reg_write_v2(i, regs[i], t)
-        i2c_reg_write_v2(i, regs[i], t)
+        i2c_reg_write_v2(i, regs[i])
+        i2c_reg_write_v2(i, regs[i])
 
     i = 7
     # print(f"Writing into reg {i}")
-    i2c_reg_write_v2(i, regs[i], t)
-    i2c_reg_write_v2(i, regs[i], t)
+    i2c_reg_write_v2(i, regs[i])
+    i2c_reg_write_v2(i, regs[i])
 
     # time.sleep(2)
 
@@ -268,18 +271,18 @@ def trimbits_dump_clk():
 
     i = 1
     # print(f"Writing into reg {i}")
-    i2c_reg_write_v2(i, regs[i], t)
-    i2c_reg_write_v2(i, regs[i], t)
+    i2c_reg_write_v2(i, regs[i])
+    i2c_reg_write_v2(i, regs[i])
 
     i = 6
     # print(f"Writing into reg {i}")
-    i2c_reg_write_v2(i, regs[i], t)
-    i2c_reg_write_v2(i, regs[i], t)
+    i2c_reg_write_v2(i, regs[i])
+    i2c_reg_write_v2(i, regs[i])
 
     i = 7
     # print(f"Writing into reg {i}")
-    i2c_reg_write_v2(i, regs[i], t)
-    i2c_reg_write_v2(i, regs[i], t)
+    i2c_reg_write_v2(i, regs[i])
+    i2c_reg_write_v2(i, regs[i])
 
     # time.sleep(2)
 

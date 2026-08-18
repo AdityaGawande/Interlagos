@@ -21,6 +21,11 @@ def VCM_set(voltage):
 def Isense_set(current):
     SMUchB_current_set(current)
 
+def IREF_read_setup():
+    SMUbad_voltage_set(2)
+    CLK_DC_voltage_set(2.038)
+    SMUchA_voltage_set(2)
+
 ## SMU section
 def SMUchA_voltage_set(voltage):
     smu = rm.open_resource(smu_2ch_addr)
@@ -325,30 +330,37 @@ def circuit_config_amp():
 ## Sanity checks
 def instrument_check():
     dmm1 = rm.open_resource(dmm1_addr)
+    print("Checking DMM1")
     print("Connected to:", dmm1.query("*IDN?").strip())
     dmm1.close()
 
     dmm2 = rm.open_resource(dmm2_addr)
+    print("Checking DMM2")
     print("Connected to:", dmm2.query("*IDN?").strip())
     dmm2.close()
 
     dmm3 = rm.open_resource(dmm3_addr)
+    print("Checking DMM3")
     print("Connected to:", dmm3.query("*IDN?").strip())
     dmm3.close()
 
     smu = rm.open_resource(smu_2ch_addr)
+    print("Checking SMU 2ch")
     print("Connected to:", smu.query("*IDN?").strip())
     smu.close()
 
     smu_bad = rm.open_resource(smu_bad_addr)
+    print("Checking SMU bad")
     print("Connected to:", smu_bad.query("*IDN?").strip())
     smu_bad.close()
 
     afg = rm.open_resource(afg_addr)
+    print("Checking AFG")
     print("Connected to:", afg.query("*IDN?").strip())
     afg.close()
     
     psu = rm.open_resource(psu_addr)
+    print("Checking PSU")
     print("Connected to:", psu.query("*IDN?").strip())
     psu.close()
 

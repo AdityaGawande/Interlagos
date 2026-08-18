@@ -23,23 +23,24 @@ def download_sheet_as_csv(sheet_id, sheet_name, output_file):
         writer.writerows(data)
     # print(f"Updated {output_file}")
 
-def update_local_files(sheet_id, file_map):
+def update_local_files(sheet_id, file_map, silent=0):
     for sheet_name, local_file in file_map.items():
         if os.path.exists(local_file):
-            print(f"Updating {sheet_name}...")
+            if(silent==0):
+                print(f"Updating {sheet_name}...")
         else:
             print(f"Creating {sheet_name}...")
         download_sheet_as_csv(sheet_id, sheet_name, local_file)
 
 # Updates the CSV file based on the values present in the google sheet
-def csv_file_update():
+def csv_file_update(silent=0):
     # Google Sheet ID and mapping of sheet names to local files 
     FILE_MAP = {
         google_sheetname1: csv_filename
         # Add more sheets and files as needed
     }
     # refresh values from google sheet
-    update_local_files(SHEET_ID, FILE_MAP)
+    update_local_files(SHEET_ID, FILE_MAP, silent)
 
 # def load_file_map_from_csv(csv_filename):
 #     file_map = {}

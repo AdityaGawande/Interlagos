@@ -60,7 +60,7 @@ csv_filename = 'gsheet_trimbit_values.csv'
 # SHEET_ID = '1hF4Snpfwg6-8w03q6VBuWfcwUNAFX5iWZxPIyqwjrc4'
 SHEET_ID = '1d5e6bYR3UWXNtU9GqvDx5CAbm5iQKSkFBRPAPimTJb8'
 google_sheetname1 = "Python_sheet"
-auth_json = 'cobalt-list-302320-c192344088ee.json'
+auth_json = 'auth_keys/cobalt-list-302320-c192344088ee.json'
 
 # Visa transactions
 t = 0.1     # Was critical for I2C. Deprecated now
@@ -69,11 +69,18 @@ afg_load_res = 67
 # I2C voltages and timing
 i2c_high_level = 2
 i2c_low_level = 0.005
-i2c_freq = 100
+i2c_freq = 1000
 i2c_time_period = 1/i2c_freq
 i2c_duty_cycle = 0.5
-i2c_delay_between_commands = 0.5
+i2c_delay_between_commands = 0
 
 # Error handling
 error_handle_retries = 20
 error_handle_delay = 0.2
+
+# Google sheet cell locations
+VBG_cell = 'B2'
+VBGTC_cell = 'B3'
+IREF_cell = 'B4'
+OSC_cell = 'B5'
+CHOP_FREQ_cell = 'B6'

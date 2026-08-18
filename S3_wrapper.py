@@ -30,6 +30,7 @@ import standard_tests
 # Update trim values
 # Measure gain 10 times
 
+# testmode_entry_exit_check replaces this
 def testmode_entry_exit_check():
     # print("Updating values from Google sheet...")
     gsheet_util.csv_file_update()
@@ -70,7 +71,8 @@ def testmode_entry_exit_check():
     # print("Exiting test mode...")
     # i2c.testmode_exit()
     # instr_top.honest_to_god_cmrr_init() # Does this have to be removed?
-    
+
+
 def VBG_trimbit_trial(trimvalue):
     gsheet_util.write_value('B2', trimvalue)
     print(f"VBG trimbit changed to {trimvalue}")

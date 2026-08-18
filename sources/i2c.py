@@ -126,7 +126,8 @@ def testmode_entry_v2():
     time.sleep(delay1)
     testmode_entry_sequence()
     time.sleep(delay1)
-    instr_control.VREF_off()    
+    instr_control.VREF_off()
+    instr_control.SMU_shutdown()
 
 def testmode_entry_sequence():
     seq_without_buf = [1,0,1,0,0,1,0,1,0,1,1,0] # This is 12 bits
@@ -167,7 +168,8 @@ def testmode_entry_debug(t=0.01):
 
 # Check if this is good enough. Make wrapper on top of this
 def testmode_exit():
-    
+    # No changes in circuit configuration are performed here
+    # I2C command for exiting testmode is present. SMU is turned off at the end.
     reg_addr = 8   #f2
     data = [0,0,0,0,1,1,1,1]    #0f
 
@@ -175,16 +177,7 @@ def testmode_exit():
     i2c_reg_write_v2(reg_addr, data)
     i2c_reg_write_v2(reg_addr, data)
 
-    # print("Connecting Vsense resistor")
-    # instr_control.vsense_res_connect()
-    # instr_control.circuit_config_amp()
-    # instr_control.SMUchA_voltage_set(2.5)
-    # instr_control.VREF_set(2.5)
-    # instr_control.VCM_set(0.5)
-    # Set Isense to 0 - SMUchB
-    # instr_control.SMUchB_current_set(0)
-
-    # time.sleep(testmode_exit_delay)
+    instr_control.SMU_shutdown()
 
 ## Writes into testmode reg to access internal nodes
 def testmode_VBG(t=0.01):

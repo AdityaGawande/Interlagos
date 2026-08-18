@@ -76,11 +76,12 @@ def open_resource_safe(rm, resource_name, error_handler,
             return rm.open_resource(resource_name)
 
         except Exception as e:
-            print(f"Open resource failed "
-                  f"(attempt {attempt}/{retries}): {e}")
+            if attempt > 1:
+                print(f"Open resource failed "
+                    f"(attempt {attempt}/{retries}): {e}")
 
             if attempt < retries:
-                time.sleep(delay)
+                time.sleep(delay*attempt*attempt)
 
     # All retries failed
     error_handler()

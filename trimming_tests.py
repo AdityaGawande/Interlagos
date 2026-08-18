@@ -7,8 +7,13 @@ from sources.constants import *
 
 def isTestmodeActive():
     current = instr_control.dmm_measure_iq()*float(1000*1000)
-    # print(f"Current = {current:.3f}")
-    if (current > 100):
+    print(f"Current = {current:.3f}")
+    # answer = int(input("Testmode active? -"))
+    # if(answer == 1):
+    #     return True
+    # else:
+    #     return False
+    if (current > 120):
         return True
     else:
         return False
@@ -144,7 +149,7 @@ def IREF_trim_init(vbg_final_trimbit):
     instr_control.VSUP_voltage_reset(active_chip_slot)
     set_vbg_trim(vbg_final_trimbit)
     # set_iref_trim(16)
-    set_iref_trim(31)
+    set_iref_trim(0)
     set_vbgtc_trim(16)
     set_clk_trim(31)
     set_clk_sel_trim(0)
@@ -152,6 +157,7 @@ def IREF_trim_init(vbg_final_trimbit):
     # Enter testmode
     testmode_entry_safe()
     i2c.testmode_VBG()
+    # Gradually step up to the VBG value
     for j in range(0,vbg_final_trimbit):
         VBG_trimbit_push(j)
     # VBG_trimbit_push(vbg_final_trimbit)
@@ -163,8 +169,12 @@ def IREF_trim_init(vbg_final_trimbit):
 
 def IREF_trim_flow(vbg_final_trimbit):
     IREF_trim_init(vbg_final_trimbit)
-    for i in range(25,32):
+    for i in range(0,31):
         IREF_trimbit_push(i)
+        testmode_exit_safe()
+        instr_control.Amplifier_current_check()
+        testmode_entry_safe()
+        i2c.testmode_IREF()
     print("Testmode is active")
 
 
@@ -175,15 +185,16 @@ def CLK_trim_init(vbg_final_trimbit, iref_final_trimbit):
     # set_iref_trim(16)
     set_iref_trim(iref_final_trimbit)
     set_vbgtc_trim(16)
-    set_clk_trim(31)
+    set_clk_trim(0)
     set_clk_sel_trim(0)
     
     # Enter testmode
     testmode_entry_safe()
     i2c.testmode_VBG()
-    VBG_trimbit_push(vbg_final_trimbit)
+    for i in range(0,vbg_final_trimbit+1):
+        VBG_trimbit_push(i)
     IREF_trimbit_push(iref_final_trimbit)
-    
+    instr_control.Amplifier_current_check()
     # Change visibility mode to VBG
     i2c.testmode_CLK()
     input("Wait and check chip status here")

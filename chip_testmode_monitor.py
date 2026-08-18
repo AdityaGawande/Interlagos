@@ -90,5 +90,5 @@ def printer(choice):
         
         # time.sleep(1)
 
-choice = int(input("0 for current\n1 for full measurements\nEnter - "))
-printer(choice)
+# choice = int(input("0 for current\n1 for full measurements\nEnter - "))
+printer(1)

@@ -1,0 +1,61 @@
+12,     199312, 199310, 199337, 199313, 199321
+Current = 224.078
+Current = 84.753
+Supply current in amplifier mode is 84.74uA
+Current = 223.807
+Frequency in testmode is 199.375KHz
+199375.299
+12,     12479,  12478,  12475,  12480,  12480
+Current = 82.023
+Supply current in amplifier mode is 82.03uA
+Current = 164.748
+Frequency in testmode is 12.470KHz
+12470.3361
+12,     49801,  49811,  49807,  49817,  49784
+Current = 82.465
+Supply current in amplifier mode is 82.47uA
+Current = 205.846
+Frequency in testmode is 49.782KHz
+49782.2508
+12,     3121,   3123,   3122,   3120,   3122
+Current = 81.785
+Supply current in amplifier mode is 81.80uA
+Current = 145.444
+Frequency in testmode is 3.119KHz
+3119.09264
+12,     99575,  99583,  99569,  99606,  99653
+Current = 83.187
+Supply current in amplifier mode is 83.20uA
+Current = 219.994
+Frequency in testmode is 99.622KHz
+99622.0011
+12,     6246,   6247,   6247,   6245,   6245
+Current = 81.789
+Supply current in amplifier mode is 81.79uA
+Current = 151.959
+Frequency in testmode is 6.239KHz
+6238.77607
+Write failed (attempt 1/20): VI_ERROR_IO (-1073807298): Could not perform operation because of I/O error.
+Write failed (attempt 2/20): VI_ERROR_IO (-1073807298): Could not perform operation because of I/O error.
+Write failed (attempt 3/20): VI_ERROR_IO (-1073807298): Could not perform operation because of I/O error.
+Write failed (attempt 1/20): VI_ERROR_IO (-1073807298): Could not perform operation because of I/O error.
+Write failed (attempt 2/20): VI_ERROR_IO (-1073807298): Could not perform operation because of I/O error.
+Write failed (attempt 3/20): VI_ERROR_IO (-1073807298): Could not perform operation because of I/O error.
+12,     24919,  24929,  24931,  24929,  24927
+Current = 82.036
+Supply current in amplifier mode is 82.01uA
+Current = 181.523
+Write failed (attempt 1/20): VI_ERROR_IO (-1073807298): Could not perform operation because of I/O error.
+Write failed (attempt 2/20): VI_ERROR_IO (-1073807298): Could not perform operation because of I/O error.
+Write failed (attempt 3/20): VI_ERROR_IO (-1073807298): Could not perform operation because of I/O error.
+Frequency in testmode is 24.925KHz
+24924.602
+12,     1562,   1562,   1562,   1562,   1562
+Current = 81.678
+Supply current in amplifier mode is 81.69uA
+Current = 141.245
+Frequency in testmode is 1.561KHz
+1560.53718
+>>> Starter()
+Test started at 2026-08-18 23:07:10.215437
+Attempting Trimming on chip #3 placed at slot #2

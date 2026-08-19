@@ -69,7 +69,7 @@ afg_load_res = 67
 # I2C voltages and timing
 i2c_high_level = 2
 i2c_low_level = 0.005
-i2c_freq = 500
+i2c_freq = 1000
 i2c_time_period = 1/i2c_freq
 i2c_duty_cycle = 0.5
 i2c_delay_between_commands = 0.1

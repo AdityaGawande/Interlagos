@@ -31,7 +31,7 @@ def testmode_entry_safe():
         fails = fails + 1
         i2c.testmode_entry_v2()
         if(fails > 1):
-            print("Testmode exit failed. Retrying")
+            print("Testmode entry failed. Retrying")
             time.sleep(1)
             # instr_control.instrument_check()
             time.sleep(2)
@@ -217,9 +217,51 @@ def CLK_trimbit_push(trimvalue):
 
 def CLK_trim_flow(vbg_final_trimbit,iref_final_trimbit):
     CLK_trim_init(vbg_final_trimbit,iref_final_trimbit)
-    for i in range(0,32):
+    for i in range(0,13):
         CLK_trimbit_push(i)
+    set_clk_sel_trim(6)
+    CLK_trimbit_push()
     print("Testmode is active")
+
+def testmode_exit_entry_loop_single():
+    testmode_exit_safe()
+    instr_control.Amplifier_current_check()
+    testmode_entry_safe() 
+
+def trim_check(vbg_t,iref_t,clk_t,clk_sel_t):
+    instr_control.VSUP_voltage_reset(active_chip_slot)
+    # set_vbg_trim(vbg_t)
+    # set_iref_trim(16)
+    set_iref_trim(16)
+    set_vbgtc_trim(16)
+    set_clk_trim(31)
+    set_clk_sel_trim(0)
+    
+    # Enter testmode
+    testmode_entry_safe()
+    # Gradually step up to the VBG value
+    print("Writing VBG bits")
+    for j in range(0,vbg_t+1):
+        i2c.testmode_VBG()
+        VBG_trimbit_push(j)
+        testmode_exit_entry_loop_single()    
+    
+    # Writing IREF bits
+    print("Writing IREF bits")
+    i2c.testmode_IREF()
+    IREF_trimbit_push(iref_t)
+    testmode_exit_entry_loop_single()
+    
+    # Writing CLK bits
+    print("Writing CLK bits")
+    CLK_trimbit_push(clk_t)
+    testmode_exit_entry_loop_single()
+    
+    # Writing CLK sel bits
+    print("Writing CLK sel bits")
+    set_clk_sel_trim(clk_sel_t)
+    CLK_trimbit_push(clk_t)
+    testmode_exit_entry_loop_single()
 
 def error_check():
     print("This still gets printed")

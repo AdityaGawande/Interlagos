@@ -110,37 +110,37 @@ def CLK_DC_voltage_set(voltage):
 ## DMM measurements section - Trimming mode
 # Measures CLK on DMM2. Assumes clock is already visible at DMM2. Returns freq in KHz
 def dmm_measure_clk(report=1):
-    dmm2 = rm.open_resource(dmm2_addr)
-    dmm2.write("CONF:FREQ")
-    dmm2.write("FREQ:VOLT:RANG 1")
-    dmm2.write("FREQ:RANG:LOW 200")
-    dmm2.write("FREQ:APER 0.01")
-    dmm2.write("TRIG:SOUR BUS")
-    dmm2.write("INIT")
-    # time.sleep(0.5)
-    dmm2.write("*TRG")
-    # time.sleep(1.5)
-    frequency = float(dmm2.query("FETCH?"))/1000
+    dmm3 = rm.open_resource(dmm3_addr)
+    dmm3.write("CONF:FREQ")
+    dmm3.write("FREQ:VOLT:RANG 1")
+    dmm3.write("FREQ:RANG:LOW 200")
+    dmm3.write("FREQ:APER 0.01")
+    dmm3.write("TRIG:SOUR BUS")
+    dmm3.write("INIT")
+    time.sleep(0.5)
+    dmm3.write("*TRG")
+    time.sleep(1.5)
+    frequency = float(dmm3.query("FETCH?"))/1000
     if(report == 1):
         print(f"Frequency in testmode is {frequency:.3f}KHz")
-    dmm2.close()
+    dmm3.close()
     return frequency*1000
 
 # Measures VBG on DMM2. Assumes voltage is already visible at DMM2. Returns voltage in V
 def dmm_measure_vbg(report=1):
-    dmm2 = rm.open_resource(dmm2_addr)
-    dmm2.write("CONF:VOLT")
-    dmm2.write(":SENS:VOLT:DC:RANGE 10")
-    dmm2.write(":SENS:VOLT:DC:NPLC 1")
-    dmm2.write("TRIG:SOUR BUS")
-    dmm2.write("INIT")
-    # time.sleep(0.5)
-    dmm2.write("*TRG")
-    # time.sleep(1.5)
-    voltage = float(dmm2.query("FETCH?"))
+    dmm3 = rm.open_resource(dmm3_addr)
+    dmm3.write("CONF:VOLT")
+    dmm3.write(":SENS:VOLT:DC:RANGE 10")
+    dmm3.write(":SENS:VOLT:DC:NPLC 100")
+    dmm3.write("TRIG:SOUR BUS")
+    dmm3.write("INIT")
+    time.sleep(0.5)
+    dmm3.write("*TRG")
+    time.sleep(1.5)
+    voltage = float(dmm3.query("FETCH?"))
     if(report == 1):
         print(f"Bandgap Voltage in testmode is {voltage:.6f}V")
-    dmm2.close()
+    dmm3.close()
     return voltage
 
 # Measures Iq on DMM3. Returns current in A
@@ -329,38 +329,38 @@ def circuit_config_amp():
 
 ## Sanity checks
 def instrument_check():
-    dmm1 = rm.open_resource(dmm1_addr)
     print("Checking DMM1")
+    dmm1 = rm.open_resource(dmm1_addr)
     print("Connected to:", dmm1.query("*IDN?").strip())
     dmm1.close()
 
-    dmm2 = rm.open_resource(dmm2_addr)
     print("Checking DMM2")
+    dmm2 = rm.open_resource(dmm2_addr)
     print("Connected to:", dmm2.query("*IDN?").strip())
     dmm2.close()
 
-    dmm3 = rm.open_resource(dmm3_addr)
     print("Checking DMM3")
+    dmm3 = rm.open_resource(dmm3_addr)
     print("Connected to:", dmm3.query("*IDN?").strip())
     dmm3.close()
 
-    smu = rm.open_resource(smu_2ch_addr)
     print("Checking SMU 2ch")
+    smu = rm.open_resource(smu_2ch_addr)
     print("Connected to:", smu.query("*IDN?").strip())
     smu.close()
 
-    smu_bad = rm.open_resource(smu_bad_addr)
     print("Checking SMU bad")
+    smu_bad = rm.open_resource(smu_bad_addr)
     print("Connected to:", smu_bad.query("*IDN?").strip())
     smu_bad.close()
 
-    afg = rm.open_resource(afg_addr)
     print("Checking AFG")
+    afg = rm.open_resource(afg_addr)
     print("Connected to:", afg.query("*IDN?").strip())
     afg.close()
     
-    psu = rm.open_resource(psu_addr)
     print("Checking PSU")
+    psu = rm.open_resource(psu_addr)
     print("Connected to:", psu.query("*IDN?").strip())
     psu.close()
 

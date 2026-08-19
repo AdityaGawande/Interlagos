@@ -2,7 +2,7 @@
 
 import trimming_tests
 
-vbg_trimbit = 8     # Step gradually from 0 to this
+vbg_trimbit = 7     # Step gradually from 0 to this
 iref_trimbit = 18   # Step directly from 16 to this
 clk_trimbit = 12    # Step directly from 31 to this
 clk_sel = 6         # Step directly from 0 to this

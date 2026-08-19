@@ -1,18 +1,17 @@
 import standard_tests
 from sources.constants import G0 as Gain_ideal
 
-standard_tests.Starter()
+length = 1
+PLC = 400
 
-length = 10 
 
-# PLC = 1
-# standard_tests.gain_error_measurement(length, Gain_ideal, PLC)
-# print()
+while(True):
+    standard_tests.Starter()
+    standard_tests.gain_error_measurement(length, Gain_ideal, PLC)
+    standard_tests.end_text()
 
-# PLC = 10
-# standard_tests.gain_error_measurement(length, Gain_ideal, PLC)
-# print()
-
-PLC = 100
-standard_tests.gain_error_measurement(length, Gain_ideal, PLC)
-print()
+    standard_tests.Starter()
+    standard_tests.cmrr_measurement(length, Gain_ideal, PLC)
+    standard_tests.end_text()
+    print()
+    print()

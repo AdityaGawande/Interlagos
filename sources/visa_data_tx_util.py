@@ -67,7 +67,7 @@ def run_smu_sequence_v2(length, arr_high, arr_low):
         afg.write("*TRG \n")
         # There should be some delay between the AFG trigger and SMU data,
         # but the SMU takes some time to reflect the LAN command, so this works out.
-        time.sleep(time_period/4 - correction)
+        # time.sleep(time_period/4 - correction)
         
         if arr_high[i]:
             smu.write(f"smua.source.levelv = {high_level}")

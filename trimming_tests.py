@@ -6,17 +6,21 @@ import sources.gsheet_util as gsheet_util
 from sources.constants import *
 
 def isTestmodeActive():
-    current = instr_control.dmm_measure_iq()*float(1000*1000)
-    print(f"Current = {current:.3f}")
-    # answer = int(input("Testmode active? -"))
-    # if(answer == 1):
-    #     return True
-    # else:
-    #     return False
-    if (current > 120):
+    
+    # time.sleep(2)
+    # i2c.testmode_CLK()
+    # time.sleep(2)
+    # clk = instr_control.dmm_measure_clk()
+    # print(f"Clock frequency = {clk:.0f}")
+    answer = int(input("Testmode active? -"))
+    if(answer == 1):
         return True
     else:
         return False
+    # if (clk > 50):
+    #     return True
+    # else:
+    #     return False
 
 def isVBG_Visible():
     # Check if voltage at VREF is greater than 0.9V
@@ -133,16 +137,17 @@ def IREF_trimbit_push(trimvalue):
     set_iref_trim(trimvalue)
     gsheet_util.csv_file_update(silent=1)
     i2c.trimbits_dump_iref()
-    instr_control.IREF_read_setup()
-    time.sleep(0.3)
-    current1 = (instr_control.dmm_measure_iref(report=0))*float(1000*1000*1000)
-    current2 = (instr_control.dmm_measure_iref(report=0))*float(1000*1000*1000)
-    current3 = (instr_control.dmm_measure_iref(report=0))*float(1000*1000*1000)
-    current4 = (instr_control.dmm_measure_iref(report=0))*float(1000*1000*1000)
-    current5 = (instr_control.dmm_measure_iref(report=0))*float(1000*1000*1000)
-    
+    # instr_control.IREF_read_setup()
+    # time.sleep(0.3)
+    # current1 = (instr_control.dmm_measure_iref(report=0))*float(1000*1000*1000)
+    # current2 = (instr_control.dmm_measure_iref(report=0))*float(1000*1000*1000)
+    # current3 = (instr_control.dmm_measure_iref(report=0))*float(1000*1000*1000)
+    # current4 = (instr_control.dmm_measure_iref(report=0))*float(1000*1000*1000)
+    # current5 = (instr_control.dmm_measure_iref(report=0))*float(1000*1000*1000)
+    input("Check current on the SMU")
     instr_control.SMU_shutdown()
-    print(f"{trimvalue},\t{current1:.0f},\t{current2:.0f},\t{current3:.0f},\t{current4:.0f},\t{current5:.0f}")
+
+    # print(f"{trimvalue},\t{current1:.0f},\t{current2:.0f},\t{current3:.0f},\t{current4:.0f},\t{current5:.0f}")
 
 def IREF_trim_init(vbg_final_trimbit):
     # Reset the values of OSC, VBGTC and IREF
@@ -225,43 +230,49 @@ def CLK_trim_flow(vbg_final_trimbit,iref_final_trimbit):
 
 def testmode_exit_entry_loop_single():
     testmode_exit_safe()
-    instr_control.Amplifier_current_check()
+    # instr_control.Amplifier_current_check()
     testmode_entry_safe() 
 
 def trim_check(vbg_t,iref_t,clk_t,clk_sel_t):
     instr_control.VSUP_voltage_reset(active_chip_slot)
-    # set_vbg_trim(vbg_t)
+    set_vbg_trim(vbg_t)
     # set_iref_trim(16)
     set_iref_trim(16)
     set_vbgtc_trim(16)
     set_clk_trim(31)
-    set_clk_sel_trim(0)
+    set_clk_sel_trim(6)
     
     # Enter testmode
     testmode_entry_safe()
     # Gradually step up to the VBG value
     print("Writing VBG bits")
-    for j in range(0,vbg_t+1):
-        i2c.testmode_VBG()
-        VBG_trimbit_push(j)
-        testmode_exit_entry_loop_single()    
+    # for j in range(0,vbg_t+1):
+    #     i2c.testmode_VBG()
+    #     VBG_trimbit_push(j)
+    #     testmode_exit_entry_loop_single()    
+    
+    i2c.testmode_VBG()
+    VBG_trimbit_push(1)
+    VBG_trimbit_push(3)
+    VBG_trimbit_push(7)
+    testmode_exit_entry_loop_single()
     
     # Writing IREF bits
     print("Writing IREF bits")
-    i2c.testmode_IREF()
+    # i2c.testmode_IREF()
     IREF_trimbit_push(iref_t)
     testmode_exit_entry_loop_single()
     
     # Writing CLK bits
     print("Writing CLK bits")
     CLK_trimbit_push(clk_t)
-    testmode_exit_entry_loop_single()
+    # testmode_exit_entry_loop_single()
     
     # Writing CLK sel bits
-    print("Writing CLK sel bits")
-    set_clk_sel_trim(clk_sel_t)
-    CLK_trimbit_push(clk_t)
-    testmode_exit_entry_loop_single()
+    # print("Writing CLK sel bits")
+    # set_clk_sel_trim(clk_sel_t)
+    # CLK_trimbit_push(clk_t)
+    # testmode_exit_entry_loop_single()
 
 def error_check():
     print("This still gets printed")

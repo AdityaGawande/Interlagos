@@ -1,16 +1,16 @@
 # Calibration constants
-G0 = 50
+G0 = 48.82
 active_chip_slot = 2
 active_chip_id = 3
 
 
 # Measurement settings
-VCM_low = 0.5
-VCM_high = 4
+VCM_low = 1
+VCM_high = 13
 VREF_voltage = 2.5
 VSUP_typical = 5
 
-Isense_high = 5e-3
+Isense_high = 5e-5
 Isense_low = -Isense_high
 
 
@@ -69,10 +69,10 @@ afg_load_res = 67
 # I2C voltages and timing
 i2c_high_level = 2
 i2c_low_level = 0.005
-i2c_freq = 1000
+i2c_freq = 100
 i2c_time_period = 1/i2c_freq
-i2c_duty_cycle = 0.5
-i2c_delay_between_commands = 0.1
+i2c_duty_cycle = 0.8
+i2c_delay_between_commands = 0.3
 
 # Error handling
 error_handle_retries = 20

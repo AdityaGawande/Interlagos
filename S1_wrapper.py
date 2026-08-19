@@ -1,8 +1,8 @@
 import standard_tests
 from sources.constants import G0 as Gain_ideal
 
-length = 1
-PLC = 400
+length = 400
+PLC = 100
 
 
 while(True):

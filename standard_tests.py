@@ -17,7 +17,7 @@ def end_text():
 
 def gain_error_measurement_init():
     # Set power supply from this
-    instr_control.VSUP_voltage_set(active_chip_slot, VSUP_typical)
+    # instr_control.VSUP_voltage_set(active_chip_slot, VSUP_typical)
     # Set VREF to 2.5V - SMUchA
     instr_control.SMUchA_voltage_set(VCM_low)
     # Set VCM to 0.5V - SMU_bad
@@ -56,7 +56,7 @@ def gain_error_measurement(n, Gain_ideal, PLC):
 def cmrr_measurement_init():
     # Set power supply from this
     # instr_control.VSUP_voltage_set(VSUP_typical, VSUP_current_limit)
-    instr_control.VSUP_voltage_set(active_chip_slot, VSUP_typical)
+    # instr_control.VSUP_voltage_set(active_chip_slot, VSUP_typical)
     # Set VREF to 2.5V - SMUchA
     instr_control.VREF_set(VREF_voltage)
     # instr_control.SMUchA_voltage_set(VREF_voltage)

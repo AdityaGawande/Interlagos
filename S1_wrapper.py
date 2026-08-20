@@ -1,7 +1,7 @@
 import standard_tests
 from sources.constants import G0 as Gain_ideal
 
-length = 400
+length = 3
 PLC = 100
 
 

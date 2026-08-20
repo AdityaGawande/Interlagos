@@ -21,7 +21,7 @@ VSUP_current_limit = 0.001
 relay_current_limit = 0.1
 SMUchA_voltage_range = 20
 SMUbad_voltage_range = 20
-SMUbad_current_limit = 0.000025
+SMUbad_current_limit = 0.000050
 SMUbad_current_range = 0.0001
 
 # Code constants

@@ -225,6 +225,8 @@ def trimbits_dump_osc_core():
 def trimbits_dump_res():
     # testmode_entry()
 
+    gsheet_util.csv_file_update()
+
     regs = csv_utils.csv_reg_value_extraction(0, 0, 10)
 
     for i in range(2,7):
